@@ -1,5 +1,7 @@
 # Resistor-Series-Circuit-Simplifier
 Program 2 assignment for CSC 1310
+
+
 Authors: Jack Bender, Cole Wilson 
 
 ## Description
