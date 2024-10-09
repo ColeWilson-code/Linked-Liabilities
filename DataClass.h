@@ -11,6 +11,8 @@ class Data
 {
     private: 
         //stores resistor info 
+        double resistance, powerRating; 
+        string colorCode; 
 
 
     public: 
@@ -20,7 +22,7 @@ class Data
 
         //setters 
 
-        
+
         //comparison and stream operator overloads
 
             // <<

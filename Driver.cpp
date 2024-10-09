@@ -42,6 +42,10 @@ int main ()
 
             //view existing resistors
             case 1: 
+
+                //need case for empty list
+
+                //need to look at the data stored in DataClass
             
 
 
@@ -49,6 +53,9 @@ int main ()
 
             //add a new resistor 
             case 2: 
+                //need to use DataClass functions to actually store info 
+
+                //after have the info ask user how they want to add the resistor
                 cout << "\n\nHow would you like to add the resistor to the circuit?"; 
 
                 cout << "\n\n1. To the front"; 
