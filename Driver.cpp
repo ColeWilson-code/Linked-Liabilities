@@ -8,6 +8,7 @@
 //library inclusions
 #include "LinkedList.h"
 #include "DataClass.h"
+#include "DataClass.cpp"
 
 int main ()
 {
@@ -54,6 +55,7 @@ int main ()
             //add a new resistor 
             case 2: 
                 //need to use DataClass functions to actually store info 
+                userInputInfo(); 
 
                 //after have the info ask user how they want to add the resistor
                 cout << "\n\nHow would you like to add the resistor to the circuit?"; 

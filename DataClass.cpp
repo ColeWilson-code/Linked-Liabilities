@@ -10,5 +10,34 @@
 //functions for DataClass will go here
 //probably be the functions that get the data from the user to make driver shorter
 
+/*
+    Function: userInputInfo
+    Purpose: get necessary data from user to later add to class/list
+*/
+void userInputInfo()
+{
+    //local variables to get values
+    int resistance, powerRating; 
+    string resistorColorCode; 
+
+    //output message to tell user what to do
+    cout << "\n\nPlease enter the following information of your resistor: \n\n"; 
+
+    //resistance 
+    cout << "RESISTANCE (as an number): "; 
+    cin >> resistance; 
+    cin.ignore(); 
+
+    //power rating 
+    cout << "\nPOWER RATING (as an number): "; 
+    cin >> powerRating; 
+    cin.ignore(); 
+
+    //color code
+    cout << "\nRESISTOR COLOR CODE (as one/more words): "; 
+    getline(cin, resistorColorCode); 
+
+    
+}
 
 //delete memory functions
