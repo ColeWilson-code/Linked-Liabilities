@@ -1,13 +1,22 @@
 /*
     Title: LinkedList.h
     Authors: Jack Bender, Cole Wilson
-    Date: 10-8-24
+    Date: 10-15-24
     Purpose: create the LinkedList class and the Template helper class
 */
 
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
+
+
+
 //library inclusions 
 #include <iostream>
+#include <list>
 using namespace std; 
+
+//template to be used with TemplateHelper class
+template <typename T>
 
 //LinkedList class
 //need at least 10 functions 
@@ -15,12 +24,24 @@ class LinkedList
 {
     private: 
         //attributes
+        struct ListNode
+        {
+            T resistor; 
+            struct ListNode *next; 
+        }; 
+
+        ListNode *head; 
+
 
         //constructor 
+        LinkedList()
+        {
+           head = NULL; //when list empty set head = end (NULL)
+        }
 
-        //getters 
+        //destructor 
+        //~LinkedList()
 
-        //setters 
 
     public: 
         //add functions 
@@ -55,6 +76,7 @@ class LinkedList
 
             //pop
 
+            //erase 
 
 
             //remove
@@ -85,6 +107,7 @@ class TemplateHelper
 {
     private: 
         //stores data of the template type
+        
 
         //holds two pointers to another list node
 
@@ -96,3 +119,8 @@ class TemplateHelper
         //set data, next and previous 
 
 }; 
+
+
+
+
+#endif 
