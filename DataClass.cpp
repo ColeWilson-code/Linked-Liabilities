@@ -28,11 +28,27 @@ void userInputInfo()
     cout << "RESISTANCE (as an number): "; 
     cin >> resistance; 
     cin.ignore(); 
+        //input validation
+            while(!(cin >> resistance))
+            {
+                //have user input another input 
+                cout << "\nPlease enter a valid choice: ";
+                cin.clear();
+                cin.ignore(100, '\n'); 
+            }
 
     //power rating 
     cout << "\nPOWER RATING (as an number): "; 
     cin >> powerRating; 
     cin.ignore(); 
+        //input validation
+            while(!(cin >> powerRating))
+            {
+                //have user input another input 
+                cout << "\nPlease enter a valid choice: ";
+                cin.clear();
+                cin.ignore(100, '\n'); 
+            }
 
     //color code
     cout << "\nRESISTOR COLOR CODE (as one/more words): "; 
