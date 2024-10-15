@@ -5,6 +5,7 @@
     Purpose: create the LinkedList class and the Template helper class
 */
 
+//define header
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
@@ -31,46 +32,85 @@ class LinkedList
         }
 
         //destructor 
-        //~LinkedList()
+        ~LinkedList()
+        {
+
+        }
 
 
     public: 
         //add functions 
 
             //append 
+            void append()
+            {
+
+            }
 
 
 
             //prepend
+            void prepend()
+            {
+                
+            }
 
 
 
             //insert
+            void insert()
+            {
+
+            }
 
 
 
         //get functions
 
             //back
+            void getBack()
+            {
+
+            }
 
 
 
             //front
+            void getFront()
+            {
+
+            }
 
 
 
             //at
+            void getAt()
+            {
+
+            }
 
 
 
         //remove functions 
 
             //pop
+            void pop()
+            {
+
+            }
 
             //erase 
+            void erase()
+            {
+
+            }
 
 
             //remove
+            void remove()
+            {
+
+            }
 
 
 
@@ -107,12 +147,54 @@ class TemplateHelper
 
     public: 
         //get data at this location 
+        getData()
+        {
+
+        }
 
         //iterate forward and backwards
 
+            //forward 
+            moveForward()
+            {
+                data = data->next; 
+            }
+
+
+            //backwards 
+            moveBackward()
+            {
+                data = data->previous; 
+            }
+
         //set data, next and previous 
 
+            //data
+            setData()
+            {
+                
+            }
+
+            //next
+            setNext()
+            {
+
+            }
+
+            //previous
+            setPrevious()
+            {
+
+            }
+
 }; 
+
+
+
+
+
+
+
 
 
 

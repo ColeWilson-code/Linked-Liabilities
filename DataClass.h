@@ -5,6 +5,11 @@
     Purpose: store information to be later modified plus some comparison and stream operator overloads 
 */
 
+#ifndef DATA_CLASS_H
+#define DATA_CLASS_H
+
+
+//inclusions
 #include "LinkedList.h"
 
 class Data
@@ -64,3 +69,8 @@ class Data
 
 
 }; 
+
+
+
+
+#endif
