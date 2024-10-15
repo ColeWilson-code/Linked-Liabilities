@@ -9,3 +9,6 @@
 
 //functions for DataClass will go here
 //probably be the functions that get the data from the user to make driver shorter
+
+
+//delete memory functions
