@@ -29,7 +29,7 @@ int main ()
         cin.ignore(); 
 
         //input validation
-            while(!(cin >> menuChoice) || (menuChoice < 1 || menuChoice > 4))
+            while(!(cin >> menuChoice) || (menuChoice < 1 || menuChoice > 5))
             {
                 //have user input another input 
                 cout << "\nPlease enter a valid choice: ";
