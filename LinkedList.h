@@ -15,28 +15,19 @@
 #include <list>
 using namespace std; 
 
-//template to be used with TemplateHelper class
-template <typename T>
-
 //LinkedList class
 //need at least 10 functions 
 class LinkedList
 {
     private: 
         //attributes
-        struct ListNode
-        {
-            T resistor; 
-            struct ListNode *next; 
-        }; 
-
-        ListNode *head; 
+       
 
 
         //constructor 
         LinkedList()
         {
-           head = NULL; //when list empty set head = end (NULL)
+           
         }
 
         //destructor 
@@ -99,7 +90,8 @@ class LinkedList
 
 
 
-
+//template to be used with TemplateHelper class
+template <typename T>
 
 //Template Helper class is like List Node but seperate class
 //List node same file
@@ -107,9 +99,11 @@ class TemplateHelper
 {
     private: 
         //stores data of the template type
+        T data; 
         
-
         //holds two pointers to another list node
+        TemplateHelper *next; 
+        TemplateHelper *previous; 
 
     public: 
         //get data at this location 

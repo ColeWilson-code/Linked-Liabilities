@@ -14,7 +14,6 @@ class Data
         double resistance, powerRating; 
         string colorCode; 
 
-
     public: 
 
         //getters 
@@ -40,10 +39,28 @@ class Data
             }
 
             // <
+            friend ostream& operator < (ostream& os, const Data& D)
+            {
+                os; //FIXME
+                
+                return os; 
+            }
 
             // >
+            friend ostream& operator > (ostream& os, const Data& D)
+            {
+                os; //FIXME
+                
+                return os; 
+            }
 
             // ==
+            friend ostream& operator == (ostream& os, const Data& D)
+            {
+                os; //FIXME
+                
+                return os; 
+            }
 
 
 }; 

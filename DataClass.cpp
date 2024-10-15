@@ -18,7 +18,8 @@ void userInputInfo()
 {
     //local variables to get values
     int resistance, powerRating; 
-    string resistorColorCode; 
+    string colorCode; 
+    Data newResistor; 
 
     //output message to tell user what to do
     cout << "\n\nPlease enter the following information of your resistor: \n\n"; 
@@ -35,8 +36,12 @@ void userInputInfo()
 
     //color code
     cout << "\nRESISTOR COLOR CODE (as one/more words): "; 
-    getline(cin, resistorColorCode); 
-
+    getline(cin, colorCode); 
+    
+    //use setter to assign these 
+    newResistor.setResistance(resistance); 
+    newResistor.setPowerRating(powerRating); 
+    newResistor.setColorCode(colorCode); 
     
 }
 
