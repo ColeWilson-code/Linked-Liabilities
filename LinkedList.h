@@ -16,6 +16,9 @@
 #include <list>
 using namespace std; 
 
+//template to be used with TemplateHelper class
+template <typename T>
+
 //LinkedList class
 //need at least 10 functions 
 class LinkedList
@@ -42,7 +45,7 @@ class LinkedList
         //add functions 
 
             //append 
-            void append()
+            void append(T)
             {
 
             }
@@ -50,7 +53,7 @@ class LinkedList
 
 
             //prepend
-            void prepend()
+            void prepend(T)
             {
                 
             }
@@ -58,7 +61,7 @@ class LinkedList
 
 
             //insert
-            void insert()
+            void insert(T)
             {
 
             }
@@ -94,20 +97,20 @@ class LinkedList
         //remove functions 
 
             //pop
-            void pop()
+            void pop(T)
             {
 
             }
 
             //erase 
-            void erase()
+            void erase(T)
             {
 
             }
 
 
             //remove
-            void remove()
+            void remove(T)
             {
 
             }
@@ -147,7 +150,7 @@ class TemplateHelper
 
     public: 
         //get data at this location 
-        getData()
+        T getData()
         {
 
         }
@@ -155,14 +158,14 @@ class TemplateHelper
         //iterate forward and backwards
 
             //forward 
-            moveForward()
+            void moveForward()
             {
                 data = data->next; 
             }
 
 
             //backwards 
-            moveBackward()
+            void moveBackward()
             {
                 data = data->previous; 
             }
@@ -170,19 +173,19 @@ class TemplateHelper
         //set data, next and previous 
 
             //data
-            setData()
+            void setData(T)
             {
                 
             }
 
             //next
-            setNext()
+            void setNext(T)
             {
 
             }
 
             //previous
-            setPrevious()
+            void setPrevious(T)
             {
 
             }
