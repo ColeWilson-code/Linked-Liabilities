@@ -62,3 +62,11 @@ void userInputInfo()
 }
 
 //delete memory functions
+/*
+    Function: deleteMemory
+    Purpose: delete unwanted memory whenever the resistors are removed from the circuit
+*/
+void deleteMemory()
+{
+    
+}

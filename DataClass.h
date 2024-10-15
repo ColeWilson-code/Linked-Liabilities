@@ -44,27 +44,35 @@ class Data
             }
 
             // <
-            friend ostream& operator < (ostream& os, const Data& D)
+            friend bool operator < (const Data& D1, const Data& D2)
             {
-                os; //FIXME
                 
-                return os; 
+                //check if resistance less than other
+                if (D1.resistance < D2.resistance)
+                    return true; 
+
+                //need one for power/color?
+
             }
 
             // >
-            friend ostream& operator > (ostream& os, const Data& D)
+            friend bool operator > (const Data& D1, const Data& D2)
             {
-                os; //FIXME
-                
-                return os; 
+                //check if resistance greater than other 
+                if (D1.resistance > D2.resistance)
+                    return true; 
+
+                //need one for power/color?
             }
 
             // ==
-            friend ostream& operator == (ostream& os, const Data& D)
+            friend bool operator == (const Data& D1, const Data& D2)
             {
-                os; //FIXME
-                
-                return os; 
+                //check if resistance is equal
+                if (D1.resistance == D2.resistance)
+                    return true; 
+
+                //need one for power/color?
             }
 
 
