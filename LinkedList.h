@@ -25,97 +25,90 @@ class LinkedList
 {
     private: 
         //attributes
-       
+        struct LinkedList
+        {
+            int value;
+            string colorCode; 
+            int powerRating; 
 
+            //two pointers, one to next and one to previous for bi-directional navigation  
+            struct ListNode *next; 
+            struct List *previous;
+        };
 
+		ListNode *head;		// List head pointer
+		ListNode *tail;	    //list tail pointer
+
+    public: 
         //constructor 
         LinkedList()
         {
-           
+            head = NULL;
+            tail = NULL;
         }
 
         //destructor 
-        ~LinkedList()
-        {
+        ~LinkedList();
 
+
+        // IS_EMPTY
+		bool isEmpty(){
+            return (head == NULL);
         }
 
+        //GET LENGTH
+		int getLength(){
+            int counter = 0;
+	        ListNode *nodePtr;
+	
+	        nodePtr = head;
+	
+	        //list traversal
+	        while(nodePtr != tail)
+	        {
+		        counter++;
+		        nodePtr = nodePtr->next;
+		        if (nodePtr == tail)
+		    	    counter++;
+	        }
+	        return counter;
+        }
 
-    public: 
-        //add functions 
-
-            //append 
-            void append(T)
-            {
-
-            }
-
-
-
-            //prepend
-            void prepend(T)
-            {
-                
-            }
-
-
-
-            //insert
-            void insert(T)
-            {
-
-            }
+        //GET_NODE_VALUE NEED TO CHANGE THIS WHEN WE HAVE RESISTORS SET UP 
+		//double getNodeValue(int){}
 
 
+		void LinkedList::appendNode(double num){
+	        ListNode *newNode;  // To point to a new node
+	        ListNode *nodePtr;  // To move through the list
 
-        //get functions
+	        // Allocate a new node and store num there.
+	        newNode = new ListNode;
+            //Resistor Values need to be changed here
+	        newNode->value = num;
+	        newNode->next = NULL;
+	        newNode->previous = NULL;
 
-            //back
-            void getBack()
-            {
+	        // If there are no nodes in the list make newNode the first node.
+	        if (head == NULL ) 
+	        {
+	        	head = newNode;
+	        	tail = newNode;
+	        }
+	        else  // Otherwise, insert newNode at end.
+	        {
+		        //set the current last node's next pointer to the new node
+	        	tail->next = newNode;
+	        	newNode->previous = tail;
+		
+	        	//now the tail is the new node
+	        	tail = newNode;
+	        }
+        }
 
-            }
-
-
-
-            //front
-            void getFront()
-            {
-
-            }
-
-
-
-            //at
-            void getAt()
-            {
-
-            }
-
-
-
-        //remove functions 
-
-            //pop
-            void pop(T)
-            {
-
-            }
-
-            //erase 
-            void erase(T)
-            {
-
-            }
-
-
-            //remove
-            void remove(T)
-            {
-
-            }
-
-
+		void insertNode(int, double);
+		void deleteNode(double);
+		void displayList() const;
 
         //friend functions
 
@@ -127,10 +120,7 @@ class LinkedList
 
             //stream operator
 
-
-
 };
-
 
 
 //template to be used with TemplateHelper class
