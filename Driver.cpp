@@ -12,6 +12,7 @@
 
 int main ()
 {
+    LinkedList resistorList;
     int menuChoice = 0; 
     //repeat program until user finished 
     do 
@@ -45,12 +46,9 @@ int main ()
             case 1: 
 
                 //need case for empty list
-
                 //need to look at the data stored in DataClass
-            
-
-
-            break; 
+                resistorList.displayList();
+                break; 
 
             //add a new resistor 
             case 2: 
@@ -96,7 +94,7 @@ int main ()
                     break; 
                 }
 
-            break; 
+                break; 
 
             //remove an existing resistor 
             case 3: 

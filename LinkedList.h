@@ -19,7 +19,7 @@ using namespace std;
 template <typename T>
 
 //LinkedList class
-//need at least 10 functions 
+//need at least 10   
 class LinkedList
 {
     private: 
@@ -226,6 +226,11 @@ class LinkedList
 
 			// Position nodePtr at the head of the list.
 			nodePtr = head;
+
+			if(nodePtr == NULL){
+				cout << "The list does not contain any elements."
+				return; 
+			}
 
 			// While nodePtr points to a node, traverse the list.
 			while (nodePtr)
