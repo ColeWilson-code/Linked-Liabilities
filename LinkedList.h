@@ -25,7 +25,7 @@ class LinkedList
     private: 
         
 		//Node class decleration
-        ListNode node;
+        ResistorNode node;
 
 		ListNode *head;		// List head pointer
 		ListNode *tail;	    //List tail pointer
@@ -34,11 +34,12 @@ class LinkedList
         //constructor 
         LinkedList()
         {
+			//creates an empty list by assigning NULL to head and tail
             head = NULL;
             tail = NULL;
         }
 
-        //destructor 
+        //destructor WORK ON THIS FUNCTION 
         ~LinkedList();
 
 
@@ -50,15 +51,20 @@ class LinkedList
         //GET LENGTH
 		int getLength(){
             int counter = 0;
-	        ListNode *nodePtr;
-	
+			//pointer to traverse list 
+	        ResistorNode *nodePtr;
+
+			//put traversal pointer at head
 	        nodePtr = head;
 	
 	        //list traversal
+			//loop while the traversal pointer is not at the tail
 	        while(nodePtr != tail)
 	        {
 		        counter++;
+				//update the traversal pointer to point to the next node 
 		        nodePtr = nodePtr->next;
+				//check if traversal is pointing to tail to make sure last increment happens
 		        if (nodePtr == tail)
 		    	    counter++;
 	        }
@@ -68,22 +74,25 @@ class LinkedList
         //GET_NODE_VALUE NEED TO CHANGE THIS WHEN WE HAVE RESISTORS SET UP 
 		//double getNodeValue(int){}
 
-
+		template <typename T>
         //insert at the end of the list
-		void appendNode(double num){
-	        ListNode *newNode;  // To point to a new node
-	        ListNode *nodePtr;  // To move through the list
+		void appendNode(T ohms, T colorCode, T powerRating){
+	        ResistorNode *newNode;  // To point to a new node by declaring a newNode pointer
+	        ResistorNode *nodePtr;  // To move through the list //traversal popinter
 
 	        // Allocate a new node and store num there.
-	        newNode = new ListNode;
-            //Resistor Values need to be changed here
-	        newNode->value = num;
+	        newNode = new ResistorNode;
+            //Resistor Values setData
+	        newNode->setData(ohms,colorCode,powerRating);
+
+			//setting next and previous to NULL
 	        newNode->next = NULL;
 	        newNode->previous = NULL;
 
 	        // If there are no nodes in the list make newNode the first node.
 	        if (head == NULL ) 
 	        {
+				//both head and tail
 	        	head = newNode;
 	        	tail = newNode;
 	        }
@@ -98,12 +107,14 @@ class LinkedList
 	        }
         }
 
-		void insertNode(int, double){
-	        ListNode *nodePtr;
-	        ListNode *newNode;
+		void insertNode(int position, T ohms, T colorCode, T powerRating){
+	        //traversal pointer
+			ResistorNode *nodePtr;
+			//new node pointer
+	        ResistorNode *newNode;
 	
-	        newNode = new ListNode;
-	        newNode->value = num;
+	        newNode = new ResistorNode;
+	        newNode->setData(ohms,colorCode,powerRating);
 	
 	        if(!head)
 	        {
@@ -155,7 +166,7 @@ class LinkedList
 
 		//DELETE NODE
 	
-		void LinkedList::deleteNode(double num){
+		void deleteNode(T ohms, T colorCode, T powerRating){
 			ListNode *nodePtr;       // To traverse the list
 			ListNode *previousNode;  // To point to the previous node
 
@@ -164,7 +175,7 @@ class LinkedList
 				return;
 
 			// Determine if the first node is the one.
-			if (head->value == num)
+			if (head->ohmsValue == ohms && head->colorCode == ohms && head->powerRating == ohms)
 			{
 				nodePtr = head->next;
 				delete head;
@@ -183,7 +194,7 @@ class LinkedList
 
 				// Skip all nodes whose value member is 
 				// not equal to num.
-				while (nodePtr && nodePtr->value != num)
+				while (nodePtr && head->ohmsValue != ohms && head->colorCode != ohms && head->powerRating != ohms)
 				{  
 					previousNode = nodePtr;
 					nodePtr = nodePtr->next;
@@ -211,7 +222,7 @@ class LinkedList
 		}
 
 		void displayList() const{
-			ListNode *nodePtr;  // To move through the list
+			ResistorNode *nodePtr;  // To move through the list
 
 			// Position nodePtr at the head of the list.
 			nodePtr = head;
@@ -220,7 +231,9 @@ class LinkedList
 			while (nodePtr)
 			{
 				// Display the value in this node.
-				cout << nodePtr->value << endl;
+				cout << nodePtr->ohmValue << endl;
+				cout << nodePtr->colorCode << endl;
+				cout << nodePtr->powerRating << endl;
 
 				// Move to the next node.
 				nodePtr = nodePtr->next;
@@ -244,11 +257,13 @@ class LinkedList
 template <typename T>
 //Template Helper class is like List Node but seperate class
 //List node same file
-class ListNode
+class ResistorNode
 {
     private: 
         //stores data of the template type
-        T data; 
+        T ohmsValue; 
+		T colorCode;
+		T powerRating;
         
         //holds two pointers to another list node
         TemplateHelper *next; 
@@ -268,7 +283,6 @@ class ListNode
                 data = data->next; 
             }
 
-
             //backwards 
             void moveBackward()
             {
@@ -278,15 +292,17 @@ class ListNode
         //set data, next and previous 
 
             //data
-            void setData(T)
+            void setData(T ohms,T colors, T pR)
             {
-                
+				ohmsValue = ohms;
+				colorCode = colors;
+				powerRating = pR
             }
 
             //next
             void setNext(T)
             {
-
+				
             }
 
             //previous
@@ -295,7 +311,5 @@ class ListNode
 
             }
 }; 
-
-
 
 #endif 

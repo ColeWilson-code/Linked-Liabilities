@@ -1,6 +1,17 @@
 {
     "files.associations": {
         "__node_handle": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "__bit_reference": "cpp",
+        "bitset": "cpp",
+        "__memory": "cpp",
+        "limits": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "vector": "cpp",
+        "chrono": "cpp"
     }
 }
