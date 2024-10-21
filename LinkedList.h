@@ -10,7 +10,6 @@
 #define LINKED_LIST_H
 
 
-
 //library inclusions 
 #include <iostream>
 #include <list>
@@ -24,20 +23,12 @@ template <typename T>
 class LinkedList
 {
     private: 
-        //attributes
-        struct LinkedList
-        {
-            int value;
-            string colorCode; 
-            int powerRating; 
-
-            //two pointers, one to next and one to previous for bi-directional navigation  
-            struct ListNode *next; 
-            struct List *previous;
-        };
+        
+		//Node class decleration
+        ListNode node;
 
 		ListNode *head;		// List head pointer
-		ListNode *tail;	    //list tail pointer
+		ListNode *tail;	    //List tail pointer
 
     public: 
         //constructor 
@@ -79,7 +70,7 @@ class LinkedList
 
 
         //insert at the end of the list
-		void LinkedList::appendNode(double num){
+		void appendNode(double num){
 	        ListNode *newNode;  // To point to a new node
 	        ListNode *nodePtr;  // To move through the list
 
@@ -162,17 +153,82 @@ class LinkedList
 	        }
         }
 
+		//DELETE NODE
+	
+		void LinkedList::deleteNode(double num){
+			ListNode *nodePtr;       // To traverse the list
+			ListNode *previousNode;  // To point to the previous node
 
+			// If the list is empty, do nothing.
+			if (!head)
+				return;
 
+			// Determine if the first node is the one.
+			if (head->value == num)
+			{
+				nodePtr = head->next;
+				delete head;
+				if(nodePtr != NULL)
+				{
+					head = nodePtr;
+					head->previous = NULL;
+				}
+				else
+					head = NULL;
+			}
+			else
+			{
+				// Initialize nodePtr to head of list
+				nodePtr = head;
 
+				// Skip all nodes whose value member is 
+				// not equal to num.
+				while (nodePtr && nodePtr->value != num)
+				{  
+					previousNode = nodePtr;
+					nodePtr = nodePtr->next;
+				}
 
+				// If nodePtr is not at the end of the list, 
+				// link the previous node to the node after
+				// nodePtr, then delete nodePtr.
+				if (nodePtr)
+				{
+					if(nodePtr == tail)
+					{
+						tail = previousNode;
+					}
+					previousNode->next = nodePtr->next;
+					delete nodePtr;
+					if(previousNode != tail)
+					{
+						nodePtr = previousNode->next;
+						nodePtr->previous = previousNode;
+					}
+				}
+	
+			}
+		}
 
+		void displayList() const{
+			ListNode *nodePtr;  // To move through the list
 
-		void deleteNode(double);
-		void displayList() const;
+			// Position nodePtr at the head of the list.
+			nodePtr = head;
+
+			// While nodePtr points to a node, traverse the list.
+			while (nodePtr)
+			{
+				// Display the value in this node.
+				cout << nodePtr->value << endl;
+
+				// Move to the next node.
+				nodePtr = nodePtr->next;
+			}
+		}
+
 
         //friend functions
-
             //sort
                 //needs to be able to sort in ascending and descending order
                 //maybe use a bool to specify direction your sorting?
@@ -186,10 +242,9 @@ class LinkedList
 
 //template to be used with TemplateHelper class
 template <typename T>
-
 //Template Helper class is like List Node but seperate class
 //List node same file
-class TemplateHelper
+class ListNode
 {
     private: 
         //stores data of the template type
@@ -200,14 +255,13 @@ class TemplateHelper
         TemplateHelper *previous; 
 
     public: 
-        //get data at this location 
-        T getData()
-        {
+        	//get data at this location 
+        	T getData()
+        	{
 
-        }
+        	}
 
-        //iterate forward and backwards
-
+        	//iterate forward and backwards
             //forward 
             void moveForward()
             {
@@ -240,16 +294,7 @@ class TemplateHelper
             {
 
             }
-
 }; 
-
-
-
-
-
-
-
-
 
 
 
