@@ -78,6 +78,7 @@ class LinkedList
 		//double getNodeValue(int){}
 
 
+        //insert at the end of the list
 		void LinkedList::appendNode(double num){
 	        ListNode *newNode;  // To point to a new node
 	        ListNode *nodePtr;  // To move through the list
@@ -106,7 +107,67 @@ class LinkedList
 	        }
         }
 
-		void insertNode(int, double);
+		void insertNode(int, double){
+	        ListNode *nodePtr;
+	        ListNode *newNode;
+	
+	        newNode = new ListNode;
+	        newNode->value = num;
+	
+	        if(!head)
+	        {
+	        	if(position != 0)
+	        	{
+	        		//can't insert node at position (>0) if there is not already a node
+	        		cout << "\n\nUnable to insert a node at position " << position << " because there are currently no nodes in the list.  I am going to insert this node at position 0.\n\n";
+	        	}
+	        	head = newNode;
+	        	tail = newNode;
+	        }
+	        else
+	        {
+	        	nodePtr = head;
+	        	int nodeCount = 0;
+	        	if(position == 0)
+	        	{
+	        		newNode->next = head;
+	        		head->previous = newNode;
+	        		head = newNode;
+	        	}
+	        	while(nodePtr != tail && nodeCount < position)
+	        	{
+	        		nodeCount++;
+	        		if(nodeCount == position)
+	        			break;
+	        		nodePtr = nodePtr->next;
+	        	}
+		
+	        	//now nodePtr is positioned 1 node BEFORE the node we want to insert
+	        	if(nodePtr->next == NULL) //we are appending this node to the end
+	        		tail = newNode;
+
+	        	//set up newNode's links
+	        	newNode->next = nodePtr->next;
+	        	newNode->previous = nodePtr;
+
+	        	//change the node on the left
+	        	nodePtr->next = newNode;
+		
+	        	//change the node on the right (if there is a node on the right)
+	        	if(newNode->next)
+		        {
+		        	nodePtr = newNode->next; 
+		        	nodePtr->previous = newNode;
+		        }
+	        }
+        }
+
+
+
+
+
+
+
 		void deleteNode(double);
 		void displayList() const;
 
