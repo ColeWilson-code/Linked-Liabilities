@@ -340,9 +340,7 @@ class ResistorNode
 {
     private: 
         //stores data of the template type
-        T ohmsValue; 
-		T colorCode;
-		T powerRating;
+        T value; 
         
         //holds two pointers to another list node
         TemplateHelper *next; 
