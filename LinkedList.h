@@ -252,7 +252,7 @@ class LinkedList
                 //maybe use a bool to specify direction your sorting?
 				//ADDED MERGE SORT EXAMPLE CODE to get an idea, would need to MODIFY/adjust/change for it to be usable
 					//example code organizes array, we need to organize 
-			friend MergeSort(int arr[], int beg, int end) 
+			friend MergeSort(LinkedList myList, int beg, int end) 
 			{
 				int mid = 0;
 				
@@ -260,14 +260,14 @@ class LinkedList
 				{
 						mid = (beg + end) / 2;  // Find the midpoint in the partition
 
-						MergeSort(arr, beg, mid); //recursively sort left partition
-						MergeSort(arr, mid + 1, end); //recursively sort right partition
+						MergeSort(myList, beg, mid); //recursively sort left partition
+						MergeSort(myList, mid + 1, end); //recursively sort right partition
 
 						// Merge left and right partition in sorted order
-						Merge(arr, beg, mid, end);
+						Merge(myList, beg, mid, end);
 				}
 			}
-			friend Merge(int arr[], int beg, int mid, int end) 
+			friend Merge(LinkedList myList, int beg, int mid, int end) 
 			{
 				int mergedSize = end - beg + 1;                // Size of merged partition
 				int mergePos = 0;                          // Position to insert merged number
@@ -324,7 +324,7 @@ class LinkedList
             //stream operator << 
             friend ostream& operator << (ostream& os, const LinkedList& L)
             {
-                os << ; //GENERAL FORM, ADD THE ACTUAL STATEMENT
+                os << L.displayList; //GENERAL FORM, ADD THE ACTUAL STATEMENT
                 
                 return os; 
             }
