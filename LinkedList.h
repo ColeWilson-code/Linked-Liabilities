@@ -12,7 +12,7 @@
 
 //library inclusions 
 #include <iostream>
-#include <list>
+//#include <list>
 using namespace std; 
 
 //template to be used with TemplateHelper class
@@ -25,7 +25,7 @@ class LinkedList
     private: 
         
 		//Node class decleration
-        ResistorNode node;
+        ListNode node;
 
 		ListNode *head;		// List head pointer
 		ListNode *tail;	    //List tail pointer
@@ -52,7 +52,7 @@ class LinkedList
 		int getLength(){
             int counter = 0;
 			//pointer to traverse list 
-	        ResistorNode *nodePtr;
+	        ListNode *nodePtr;
 
 			//put traversal pointer at head
 	        nodePtr = head;
@@ -77,11 +77,11 @@ class LinkedList
 		template <typename T>
         //insert at the end of the list
 		void appendNode(T ohms, T colorCode, T powerRating){
-	        ResistorNode *newNode;  // To point to a new node by declaring a newNode pointer
-	        ResistorNode *nodePtr;  // To move through the list //traversal popinter
+	        ListNode *newNode;  // To point to a new node by declaring a newNode pointer
+	        ListNode *nodePtr;  // To move through the list //traversal popinter
 
 	        // Allocate a new node and store num there.
-	        newNode = new ResistorNode;
+	        newNode = new ListNode;
             //Resistor Values setData
 	        newNode->setData(ohms,colorCode,powerRating);
 
@@ -109,11 +109,11 @@ class LinkedList
 
 		void insertNode(int position, T ohms, T colorCode, T powerRating){
 	        //traversal pointer
-			ResistorNode *nodePtr;
+			ListNode *nodePtr;
 			//new node pointer
-	        ResistorNode *newNode;
+	        ListNode *newNode;
 	
-	        newNode = new ResistorNode;
+	        newNode = new ListNode;
 	        newNode->setData(ohms,colorCode,powerRating);
 	
 	        if(!head)
@@ -175,7 +175,7 @@ class LinkedList
 				return;
 
 			// Determine if the first node is the one.
-			if (head->ohmsValue == ohms && head->colorCode == ohms && head->powerRating == ohms)
+			if (head->ohmsValue == ohms && head->colorCode == colorCode && head->powerRating == powerRating)
 			{
 				nodePtr = head->next;
 				delete head;
@@ -194,7 +194,7 @@ class LinkedList
 
 				// Skip all nodes whose value member is 
 				// not equal to num.
-				while (nodePtr && head->ohmsValue != ohms && head->colorCode != ohms && head->powerRating != ohms)
+				while (nodePtr && head->ohmsValue != ohms && head->colorCode != colorCode && head->powerRating != powerRating)
 				{  
 					previousNode = nodePtr;
 					nodePtr = nodePtr->next;
@@ -222,13 +222,13 @@ class LinkedList
 		}
 
 		void displayList() const{
-			ResistorNode *nodePtr;  // To move through the list
+			ListNode *nodePtr;  // To move through the list
 
 			// Position nodePtr at the head of the list.
 			nodePtr = head;
 
 			if(nodePtr == NULL){
-				cout << "The list does not contain any elements."
+				cout << "The list does not contain any elements." << endl;
 				return; 
 			}
 
@@ -336,18 +336,21 @@ class LinkedList
 template <typename T>
 //Template Helper class is like List Node but seperate class
 //List node same file
-class ResistorNode
+class ListNode
 {
     private: 
         //stores data of the template type
-        T value; 
+        T data;
         
         //holds two pointers to another list node
         TemplateHelper *next; 
         TemplateHelper *previous; 
 
     public: 
-        	//get data at this location 
+        	
+			//constructor 
+			
+			//get data at this location 
         	T getData()
         	{
 
@@ -371,9 +374,10 @@ class ResistorNode
             //data
             void setData(T ohms,T colors, T pR)
             {
-				ohmsValue = ohms;
-				colorCode = colors;
-				powerRating = pR;
+				//dot operator to data class funtions 
+				data.setResistance(ohms);
+				data.setColorCode(colors);
+				data.setPowerRating(pR);
             }
 
             //next

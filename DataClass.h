@@ -75,7 +75,6 @@ class Data
                 //power and color less important
             }
 
-
 }; 
 
 
