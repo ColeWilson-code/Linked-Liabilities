@@ -165,7 +165,7 @@ class LinkedList
         }
 
 		//DELETE NODE
-	
+		
 		void deleteNode(T ohms, T colorCode, T powerRating){
 			ListNode *nodePtr;       // To traverse the list
 			ListNode *previousNode;  // To point to the previous node
