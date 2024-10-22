@@ -12,7 +12,7 @@
 
 int main ()
 {
-    LinkedList resistorList;
+    LinkedList<Data> resistorList;
     int menuChoice = 0; 
     //repeat program until user finished 
     do 
