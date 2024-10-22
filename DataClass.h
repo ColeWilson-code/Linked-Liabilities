@@ -1,7 +1,7 @@
 /*
     Title: DataClass.h
     Authors: Jack Bender, Cole Wilson
-    Date: 10-15-24
+    Date: 10-23-24
     Purpose: store information to be later modified plus some comparison and stream operator overloads 
 */
 
@@ -51,7 +51,7 @@ class Data
                 if (D1.resistance < D2.resistance)
                     return true; 
 
-                //need one for power/color?
+                //power and color less important 
 
             }
 
@@ -62,7 +62,7 @@ class Data
                 if (D1.resistance > D2.resistance)
                     return true; 
 
-                //need one for power/color?
+                //power and color less important
             }
 
             // ==
@@ -72,7 +72,7 @@ class Data
                 if (D1.resistance == D2.resistance)
                     return true; 
 
-                //need one for power/color?
+                //power and color less important
             }
 
 

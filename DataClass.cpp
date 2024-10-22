@@ -1,7 +1,7 @@
 /*
     Title: DataClass.cpp
     Authors: Jack Bender, Cole Wilson
-    Date: 10-15-24
+    Date: 10-23-24
     Purpose: this where we have functions to actually modify the data 
 */
 
@@ -54,7 +54,7 @@ void userInputInfo()
     cout << "\nRESISTOR COLOR CODE (as one/more words): "; 
     getline(cin, colorCode); 
     
-    //use setter to assign these 
+    //use setter to assign these to class proper 
     newResistor.setResistance(resistance); 
     newResistor.setPowerRating(powerRating); 
     newResistor.setColorCode(colorCode); 
