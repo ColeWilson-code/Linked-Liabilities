@@ -43,12 +43,19 @@ class LinkedList
         ~LinkedList();
 
 
-        // IS_EMPTY
+        /*
+			Function: isEmpty
+			Purpose: check if the list is empty or not 
+		*/
 		bool isEmpty(){
             return (head == NULL);
         }
 
-        //GET LENGTH
+    
+		/*
+			Function: getLength
+			Purpose: find length of list 
+		*/
 		int getLength(){
             int counter = 0;
 			//pointer to traverse list 
@@ -75,15 +82,18 @@ class LinkedList
 		//double getNodeValue(int){}
 
 		template <typename T>
-        //insert at the end of the list
-		void appendNode(T ohms, T colorCode, T powerRating){
+		/*
+			Function: appendNode
+			Purpose: insert data at the end of the list 
+		*/
+		void appendNode(T newData){
 	        ListNode *newNode;  // To point to a new node by declaring a newNode pointer
 	        ListNode *nodePtr;  // To move through the list //traversal popinter
 
 	        // Allocate a new node and store num there.
 	        newNode = new ListNode;
             //Resistor Values setData
-	        newNode->setData(ohms,colorCode,powerRating);
+	        newNode->data = newData;
 
 			//setting next and previous to NULL
 	        newNode->next = NULL;
@@ -107,14 +117,19 @@ class LinkedList
 	        }
         }
 
-		void insertNode(int position, T ohms, T colorCode, T powerRating){
+
+		/*
+			Function: insertNode
+			Purpose: insert the data a specific node 
+		*/
+		void insertNode(int position, T newData){
 	        //traversal pointer
 			ListNode *nodePtr;
 			//new node pointer
 	        ListNode *newNode;
 	
 	        newNode = new ListNode;
-	        newNode->setData(ohms,colorCode,powerRating);
+	        newNode->data = newData;
 	
 	        if(!head)
 	        {
@@ -163,10 +178,13 @@ class LinkedList
 		        }
 	        }
         }
-
-		//DELETE NODE
 		
-		void deleteNode(T ohms, T colorCode, T powerRating){
+
+		/*
+			Function: deleteNode
+			Purpose: delete the data a node 
+		*/
+		 void deleteNode(T deleteData){
 			ListNode *nodePtr;       // To traverse the list
 			ListNode *previousNode;  // To point to the previous node
 
@@ -175,7 +193,7 @@ class LinkedList
 				return;
 
 			// Determine if the first node is the one.
-			if (head->ohmsValue == ohms && head->colorCode == colorCode && head->powerRating == powerRating)
+			if (head->data == deleteData)
 			{
 				nodePtr = head->next;
 				delete head;
@@ -194,7 +212,7 @@ class LinkedList
 
 				// Skip all nodes whose value member is 
 				// not equal to num.
-				while (nodePtr && head->ohmsValue != ohms && head->colorCode != colorCode && head->powerRating != powerRating)
+				while (nodePtr && nodePtr->data != deleteData)
 				{  
 					previousNode = nodePtr;
 					nodePtr = nodePtr->next;
@@ -221,6 +239,7 @@ class LinkedList
 			}
 		}
 
+
 		void displayList() const{
 			ListNode *nodePtr;  // To move through the list
 
@@ -236,9 +255,7 @@ class LinkedList
 			while (nodePtr)
 			{
 				// Display the value in this node.
-				cout << nodePtr->ohmValue << endl;
-				cout << nodePtr->colorCode << endl;
-				cout << nodePtr->powerRating << endl;
+				cout << nodePtr->data << endl;
 
 				// Move to the next node.
 				nodePtr = nodePtr->next;
@@ -319,18 +336,15 @@ class LinkedList
 
 			}
 
-
-
             //stream operator << 
             friend ostream& operator << (ostream& os, const LinkedList& L)
             {
-                os << L.displayList; //GENERAL FORM, ADD THE ACTUAL STATEMENT
+                os << L.data; 
                 
                 return os; 
             }
 
 };
-
 
 //template to be used with TemplateHelper class
 template <typename T>
@@ -343,12 +357,17 @@ class ListNode
         T data;
         
         //holds two pointers to another list node
-        TemplateHelper *next; 
-        TemplateHelper *previous; 
+        ListNode *next; 
+        ListNode *previous; 
 
     public: 
         	
 			//constructor 
+			ListNode()
+			{
+				//list empty
+				data = NULL; 
+			}
 			
 			//get data at this location 
         	T getData()
@@ -372,12 +391,9 @@ class ListNode
         //set data, next and previous 
 
             //data
-            void setData(T ohms,T colors, T pR)
+            void setData(T var)
             {
-				//dot operator to data class funtions 
-				data.setResistance(ohms);
-				data.setColorCode(colors);
-				data.setPowerRating(pR);
+				data = var; 
             }
 
             //next
