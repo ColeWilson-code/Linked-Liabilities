@@ -5,9 +5,6 @@ output: Driver.o LinkedList.o DataClass.o
 Driver.o: Driver.cpp
 	g++ -c Driver.cpp
 
-LinkedList.o: DataClass.cpp
-	g++ -c DataClass.cpp
-
 DataClass.o: DataClass.cpp
 	g++ -c DataClass.cpp
 
