@@ -4,6 +4,12 @@ Program 2 assignment for CSC 1310
 
 Authors: Jack Bender, Cole Wilson 
 
+
+Assigned: 10-9-24
+
+
+Completed: 10-30-24
+
 ## Description
 Program contains a linked list class, data class, and template helper class. Linked List connects the data together and organizes it, data class stores info about individual items, 
 and template helper provides a way to move through the linked list and get the data from items. 
@@ -32,6 +38,9 @@ Stores the data about the resistors
 
 - Power Rating
 
-- Color Code 
-### Template Helper 
+- Color Code
+
+
+Uses getters/setters to allow data to be modified in function calls. 
+### List Node 
 This will store data of the template type and have a few functions used for iterating through the list and getting the data at its location
