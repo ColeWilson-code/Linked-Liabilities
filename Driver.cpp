@@ -135,14 +135,11 @@ int main ()
 
                 resistorList.deleteNode(removeChoice);
 
-                
-
             break; 
 
             //Simplify the circuit 
             case 4: 
                //pop repeated until whole circuit simplified
-                
                 
             break; 
 
