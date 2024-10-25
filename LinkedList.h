@@ -24,8 +24,8 @@ class LinkedList
 {
     private: 
 
-		ListNode<T> *head;	// List head pointer
-		ListNode<T> *tail;	    //List tail pointer
+		ListNode *head;	// List head pointer
+		ListNode *tail;	    //List tail pointer
 
     public: 
         //constructor 
@@ -113,6 +113,41 @@ class LinkedList
 	        }
         }
 
+		/*
+			Function: appendNode
+			Purpose: insert data at the beginning of the list 
+		*/
+		void prependNode(T newData){
+	        ListNode<T> *newNode;  // To point to a new node by declaring a newNode pointer
+	        ListNode<T> *nodePtr;  // To move through the list //traversal popinter
+
+	        // Allocate a new node and store num there.
+	        newNode = new ListNode<T>(newData);
+            //Resistor Values setData
+	        newNode->data = newData;
+
+			//setting next and previous to NULL
+	        newNode->next = NULL;
+	        newNode->previous = NULL;
+
+	        // If there are no nodes in the list make newNode the first node.
+	        if (head == NULL ) 
+	        {
+				//both head and tail
+	        	head = newNode;
+	        	tail = newNode;
+	        }
+	        else  // Otherwise, insert newNode at end.
+	        {
+		        //set the current first node's previous pointer to the new node
+	        	tail->next = head;
+	        	newNode->previous = newNode;
+		
+	        	//now the tail is the new node
+	        	head = newNode;
+	        }
+        }
+
 
 		/*
 			Function: insertNode
@@ -180,16 +215,17 @@ class LinkedList
 			Function: deleteNode
 			Purpose: delete the data a node 
 		*/
-		 void deleteNode(T deleteData){
+		 void deleteNode(int position){
 			ListNode<T> *nodePtr;       // To traverse the list
 			ListNode<T> *previousNode;  // To point to the previous node
 
 			// If the list is empty, do nothing.
 			if (!head)
+				cout << "The list is already empty.\n";
 				return;
 
 			// Determine if the first node is the one.
-			if (head->data == deleteData)
+			if (position == 0)
 			{
 				nodePtr = head->next;
 				delete head;

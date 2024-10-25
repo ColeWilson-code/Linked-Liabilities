@@ -14,7 +14,7 @@
     Function: userInputInfo
     Purpose: get necessary data from user to later add to class/list
 */
-void userInputInfo()
+Data userInputInfo()
 {
     //local variables to get values
     int resistance, powerRating; 
@@ -58,6 +58,7 @@ void userInputInfo()
     newResistor.setResistance(resistance); 
     newResistor.setPowerRating(powerRating); 
     newResistor.setColorCode(colorCode); 
+    return newResistor;
     
 }
 

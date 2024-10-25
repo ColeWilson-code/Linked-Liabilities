@@ -13,7 +13,13 @@
 int main ()
 {
     LinkedList<Data> resistorList;
+    
+    //below vars used for switch statements
     int menuChoice = 0; 
+    int subChoice = 0; 
+    int addChoice, removeChoice;  
+    Data newResistor;
+    
     //repeat program until user finished 
     do 
     {
@@ -40,7 +46,6 @@ int main ()
 
         switch (menuChoice)
         {
-            int subChoice = 0; 
 
             //view existing resistors
             case 1: 
@@ -53,14 +58,14 @@ int main ()
             //add a new resistor 
             case 2: 
                 //need to use DataClass functions to actually store info 
-                userInputInfo(); 
+                newResistor = userInputInfo();
 
                 //after have the info ask user how they want to add the resistor
                 cout << "\n\nHow would you like to add the resistor to the circuit?"; 
 
                 cout << "\n\n1. To the front"; 
                 cout << "\n2. To the back"; 
-                cout << "\n3. At a more specific spot"; 
+                cout << "\n3. At a specific location"; 
 
                 cout << "\n\nPlease enter an integer from the menu: "; 
                 cin >> subChoice; 
@@ -80,28 +85,22 @@ int main ()
                 {
                     //prepend to front 
                     case 1: 
-                        //prependNode(); 
-
-                    
-                    break; 
+                        resistorList.prependNode(newResistor); 
+                        break; 
 
                     //append to back
                     case 2: 
-                        //appendNode(); 
-
-                    break; 
+                        resistorList.appendNode(newResistor);
+                        break; 
 
                     //at a specific spot
                     case 3: 
-
-                        int addChoice; 
-                        
-                        cout << "\n\nPlease enter the position of the resistor in the circuit as an integer: "; 
+                        cout << "\n\nPlease enter the position of the resistor in the circuit as an integer between 0 and " << resistorList.getLength() << ": "; 
                         cin >> addChoice; 
                         cin.ignore(); 
 
                         //input validation
-                        while(!(cin >> addChoice))
+                        while(!(cin >> addChoice) || (addChoice < 0 || addChoice > resistorList.getLength()))
                         {
                             //have user input another input 
                             cout << "\nPlease enter a valid choice: ";
@@ -109,17 +108,15 @@ int main ()
                             cin.ignore(100, '\n'); 
                         }
 
-                        //insertNode(addChoice);
+                        resistorList.insertNode(addChoice,newResistor);
 
-                    break; 
+                        break; 
                 }
 
                 break; 
 
             //remove an existing resistor 
             case 3: 
-                int removeChoice; 
-
                 cout << "\n\nWhat resistor would you like to remove from the circuit?"; 
                 cout << "\nNote: this will remove the resistor completely without simplifying it with the circuit"; 
 
@@ -136,7 +133,7 @@ int main ()
                     cin.ignore(100, '\n'); 
                 }
 
-                //deleteNode(removeChoice); 
+                resistorList.deleteNode(removeChoice);
 
                 
 
