@@ -80,14 +80,14 @@ int main ()
                 {
                     //prepend to front 
                     case 1: 
-                        prependNode(); 
+                        //prependNode(); 
 
                     
                     break; 
 
                     //append to back
                     case 2: 
-                        appendNode(); 
+                        //appendNode(); 
 
                     break; 
 
@@ -109,7 +109,7 @@ int main ()
                             cin.ignore(100, '\n'); 
                         }
 
-                        insertNode(addChoice);
+                        //insertNode(addChoice);
 
                     break; 
                 }
@@ -136,7 +136,7 @@ int main ()
                     cin.ignore(100, '\n'); 
                 }
 
-                deleteNode(removeChoice); 
+                //deleteNode(removeChoice); 
 
                 
 

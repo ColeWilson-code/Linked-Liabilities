@@ -77,7 +77,4 @@ class Data
 
 }; 
 
-
-
-
 #endif

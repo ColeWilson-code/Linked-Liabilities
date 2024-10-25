@@ -23,12 +23,9 @@ template <typename T>
 class LinkedList
 {
     private: 
-        
-		//Node class decleration
-        ListNode node;
 
-		ListNode *head;		// List head pointer
-		ListNode *tail;	    //List tail pointer
+		ListNode<T> *head;	// List head pointer
+		ListNode<T> *tail;	    //List tail pointer
 
     public: 
         //constructor 
@@ -51,7 +48,7 @@ class LinkedList
             return (head == NULL);
         }
 
-    
+  
 		/*
 			Function: getLength
 			Purpose: find length of list 
@@ -59,7 +56,7 @@ class LinkedList
 		int getLength(){
             int counter = 0;
 			//pointer to traverse list 
-	        ListNode *nodePtr;
+	        ListNode<T> *nodePtr;
 
 			//put traversal pointer at head
 	        nodePtr = head;
@@ -81,17 +78,16 @@ class LinkedList
         //GET_NODE_VALUE NEED TO CHANGE THIS WHEN WE HAVE RESISTORS SET UP 
 		//double getNodeValue(int){}
 
-		template <typename T>
 		/*
 			Function: appendNode
 			Purpose: insert data at the end of the list 
 		*/
 		void appendNode(T newData){
-	        ListNode *newNode;  // To point to a new node by declaring a newNode pointer
-	        ListNode *nodePtr;  // To move through the list //traversal popinter
+	        ListNode<T> *newNode;  // To point to a new node by declaring a newNode pointer
+	        ListNode<T> *nodePtr;  // To move through the list //traversal popinter
 
 	        // Allocate a new node and store num there.
-	        newNode = new ListNode;
+	        newNode = new ListNode<T>(newData);
             //Resistor Values setData
 	        newNode->data = newData;
 
@@ -124,11 +120,11 @@ class LinkedList
 		*/
 		void insertNode(int position, T newData){
 	        //traversal pointer
-			ListNode *nodePtr;
+			ListNode<T> *nodePtr;
 			//new node pointer
-	        ListNode *newNode;
+	        ListNode<T> *newNode;
 	
-	        newNode = new ListNode;
+	        newNode = new ListNode<T>(newData);
 	        newNode->data = newData;
 	
 	        if(!head)
@@ -185,8 +181,8 @@ class LinkedList
 			Purpose: delete the data a node 
 		*/
 		 void deleteNode(T deleteData){
-			ListNode *nodePtr;       // To traverse the list
-			ListNode *previousNode;  // To point to the previous node
+			ListNode<T> *nodePtr;       // To traverse the list
+			ListNode<T> *previousNode;  // To point to the previous node
 
 			// If the list is empty, do nothing.
 			if (!head)
@@ -241,7 +237,7 @@ class LinkedList
 
 
 		void displayList() const{
-			ListNode *nodePtr;  // To move through the list
+			ListNode<T> *nodePtr;  // To move through the list
 
 			// Position nodePtr at the head of the list.
 			nodePtr = head;
@@ -363,10 +359,10 @@ class ListNode
     public: 
         	
 			//constructor 
-			ListNode()
+			ListNode(T newData)
 			{
 				//list empty
-				data = NULL; 
+				data = newData; 
 			}
 			
 			//get data at this location 
