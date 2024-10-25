@@ -227,47 +227,31 @@ class LinkedList
 			// Determine if the first node is the one.
 			if (position == 0)
 			{
-				nodePtr = head->next;
-				delete head;
-				if(nodePtr != NULL)
-				{
-					head = nodePtr;
-					head->previous = NULL;
+				head = nodePtr->next;
+				if(head != NULL){
+					head->previous == NULL; //update the previous to NULL because nothing is before it 
+				}else{
+					tail == NULL; //if list is empty update tail to NULL
 				}
-				else
-					head = NULL;
-			}
-			else
-			{
-				// Initialize nodePtr to head of list
-				nodePtr = head;
-
-				// Skip all nodes whose value member is 
-				// not equal to num.
-				while (nodePtr && nodePtr->data != deleteData)
-				{  
-					previousNode = nodePtr;
-					nodePtr = nodePtr->next;
+				delete nodePtr;
+				return;
+			}else{
+				//traverse to position passed in argument 
+				for(int i = 0; i < position; i++){
+					nodePtr = nodePtr->next; //traversing by setting next to nodePtr and then looping
 				}
 
-				// If nodePtr is not at the end of the list, 
-				// link the previous node to the node after
-				// nodePtr, then delete nodePtr.
-				if (nodePtr)
-				{
-					if(nodePtr == tail)
-					{
-						tail = previousNode;
-					}
-					previousNode->next = nodePtr->next;
-					delete nodePtr;
-					if(previousNode != tail)
-					{
-						nodePtr = previousNode->next;
-						nodePtr->previous = previousNode;
-					}
+				if(nodePtr->previous != NULL){
+					nodePtr->previous_>next = nodePtr->next; //bypasses the current node in the next direction, this hurts my head
 				}
-	
+				if(nodePtr->next != NULL){
+					nodePtr->next->previous = nodePtr->previous; //bypasses the position node in the previous direction, this hurts my head
+				}
+				if(nodePtr == tail){
+					tail = nodePtr->previous; //update tail to be the previous node
+				}
+				delete nodePtr;
+				return;
 			}
 		}
 
