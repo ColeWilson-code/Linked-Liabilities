@@ -24,7 +24,7 @@ class LinkedList
 {
     private: 
 
-		ListNode *head;	// List head pointer
+		ListNode *head;		//List head pointer
 		ListNode *tail;	    //List tail pointer
 
     public: 
@@ -114,7 +114,7 @@ class LinkedList
         }
 
 		/*
-			Function: appendNode
+			Function: prependNode
 			Purpose: insert data at the beginning of the list 
 		*/
 		void prependNode(T newData){
@@ -285,34 +285,50 @@ class LinkedList
                 //maybe use a bool to specify direction your sorting?
 				//ADDED MERGE SORT EXAMPLE CODE to get an idea, would need to MODIFY/adjust/change for it to be usable
 					//example code organizes array, we need to organize 
-			friend MergeSort(LinkedList myList, int beg, int end) 
+			friend MergeSort(LinkedList myList) 
 			{
-				int mid = 0;
-				
-				if (beg < end)  //recursive case (when beg == end then that is base case) 
+				//use function to get list length
+				int listLength = 0; 						
+				listLength = getLength(); 		
+
+				//initialize the midpoint of list using the length
+				int mid;									
+				mid = listLength/2; 
+
+				//traversal pointer
+				ListNode<T> *nodePtr;
+
+				//new node pointer
+				ListNode<T> *newNode;
+
+				//sort until reach end of list
+				if (nodePtr != NULL)  
 				{
-						mid = (beg + end) / 2;  // Find the midpoint in the partition
+					//recursively sort left partition
+					MergeSort(myList, mid); 
 
-						MergeSort(myList, beg, mid); //recursively sort left partition
-						MergeSort(myList, mid + 1, end); //recursively sort right partition
+					//recursively sort right partition
+					MergeSort(myList, mid + 1); 
 
-						// Merge left and right partition in sorted order
-						Merge(myList, beg, mid, end);
+					//Merge left and right partition in sorted order
+					Merge(myList, mid);
 				}
 			}
-			friend Merge(LinkedList myList, int beg, int mid, int end) 
+			friend Merge(LinkedList myList, int mid, &nodePtr, &newNode) 
 			{
-				int mergedSize = end - beg + 1;                // Size of merged partition
-				int mergePos = 0;                          // Position to insert merged number
-				int leftPos = 0;                           // Position of elements in left partition
-				int rightPos = 0;                          // Position of elements in right partition
-				int* mergedNumbers = new int[mergedSize];  // Dynamically allocates temporary array for merged array
+				// Dynamically allocates temporary list for merged list
+				T* mergedNumbers = new T[listLength];  
 				
-				leftPos = beg;                               // Initialize left partition position
-				rightPos = mid + 1;                          // Initialize right partition position
+				// Initialize left partition position to beginning of list
+				int leftPos;
+				leftPos = head;              
+
+				// Initialize right partition position to midpoint +1      
+				int rightPos;   
+				rightPos = mid + 1;                          
    
 				// Add smallest element from left or right partition to merged arr
-				while (leftPos <= mid && rightPos <= end) 
+				while (leftPos <= mid && rightPos != NULL) 
 				{
 					if (arr[leftPos] < arr[rightPos]) {
 						mergedNumbers[mergePos] = arr[leftPos];
