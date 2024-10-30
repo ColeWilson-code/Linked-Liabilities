@@ -32,10 +32,10 @@ class ListNode
     public: 
         	
 			//constructor 
-			ListNode(T newData)
+			ListNode()
 			{
 				//list empty
-				data = newData; 
+				data = NULL; 
 			}
 			
 			//get data at this location 
@@ -66,15 +66,15 @@ class ListNode
             }
 
             //next
-            void setNext(T)
+            void setNext(T var)
             {
-				
+				data->next = var; 
             }
 
             //previous
-            void setPrevious(T)
+            void setPrevious(T var)
             {
-
+				data->previous = var; 
             }
 }; 
 
