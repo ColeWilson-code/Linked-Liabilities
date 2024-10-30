@@ -1,0 +1,50 @@
+a
+99
+0
+
+1
+
+3
+
+2
+100
+50
+Brown Black Red
+
+3
+100
+
+1
+
+2
+1000
+50
+Brown Black Red
+
+2
+4700
+100
+Purple Yellow Red
+
+2
+1
+0
+Brown Black Brown
+
+2
+1000
+50
+Brown Black Red
+
+1
+
+3
+1000
+
+1
+
+4
+
+1
+
+5

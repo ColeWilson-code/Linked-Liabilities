@@ -1,7 +1,7 @@
 /*
     Title: DataClass.h
     Authors: Jack Bender, Cole Wilson
-    Date: 10-23-24
+    Date: 11-01-24
     Purpose: store information to be later modified plus some comparison and stream operator overloads 
 */
 

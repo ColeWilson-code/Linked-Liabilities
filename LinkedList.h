@@ -1,7 +1,7 @@
 /*
     Title: LinkedList.h
     Authors: Jack Bender, Cole Wilson
-    Date: 10-23-24
+    Date: 11-01-24
     Purpose: create the LinkedList class and the Template helper class
 */
 

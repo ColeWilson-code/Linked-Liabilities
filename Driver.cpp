@@ -1,7 +1,7 @@
 /*
     Title: Driver.cpp
     Authors: Jack Bender, Cole Wilson
-    Date: 10-23-24
+    Date: 11-01-24
     Purpose: provide a way to run the program 
 */
 
@@ -118,9 +118,9 @@ int main ()
             //remove an existing resistor 
             case 3: 
                 cout << "\n\nWhat resistor would you like to remove from the circuit?"; 
-                cout << "\nNote: this will remove the resistor completely without simplifying it with the circuit"; 
+                cout << "\nNote: this will remove the resistors completely without simplifying it with the circuit"; 
 
-                cout << "\n\nPlease enter the position of the resistor in the circuit as an integer: "; 
+                cout << "\n\nPlease enter the resistance of the resistors in the circuit you want to remove: "; 
                 cin >> removeChoice; 
                 cin.ignore(); 
 

@@ -1,7 +1,7 @@
 /*
     Title: DataClass.cpp
     Authors: Jack Bender, Cole Wilson
-    Date: 10-23-24
+    Date: 11-01-24
     Purpose: this where we have functions to actually modify the data 
 */
 

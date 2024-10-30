@@ -8,7 +8,7 @@ Authors: Jack Bender, Cole Wilson
 Assigned: 10-9-24
 
 
-Completed: 10-30-24
+Completed: 11-01-24
 
 ## Description
 Program contains a linked list class, data class, and template helper class. Linked List connects the data together and organizes it, data class stores info about individual items, 
