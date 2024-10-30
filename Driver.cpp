@@ -49,10 +49,38 @@ int main ()
 
             //view existing resistors
             case 1: 
+                char sortChoice; 
 
-                //need case for empty list
-                //need to look at the data stored in DataClass
-                resistorList.displayList();
+                cout << "\n\nWould you like to sort your resistors by resistance?"; 
+                cout << "\nPlease enter y/n: "; 
+
+                cin >> sortChoice; 
+                cin.ignore(); 
+
+                //input validation
+                while(!(cin >> sortChoice) || (sortChoice != 'y' || sortChoice != 'n'))
+                {
+                    //have user input another input 
+                    cout << "\nPlease enter a valid choice: ";
+                    cin.clear();
+                    cin.ignore(100, '\n'); 
+                }
+                
+                //just print the resistors as is 
+                if (sortChoice = 'n')
+                {
+                    resistorList.displayList();
+                }
+
+                //otherwise print it sorted using funny functions
+                else if (sortChoice = 'y')
+                {   
+                    int length = resistorList.getLength();
+                    int* arr = resistorList.StoreResistanceForMerge();
+                    resistorList.MergeSort(arr, 0, (length - 1));
+                }
+
+
                 break; 
 
             //add a new resistor 
@@ -140,6 +168,7 @@ int main ()
             //Simplify the circuit 
             case 4: 
                //pop repeated until whole circuit simplified
+               resistorList.pop(); 
                 
             break; 
 

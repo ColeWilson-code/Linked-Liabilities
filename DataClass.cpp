@@ -5,15 +5,14 @@
     Purpose: this where we have functions to actually modify the data 
 */
 
+//inclusions
 #include "DataClass.h"
 
-//functions for DataClass will go here
-//probably be the functions that get the data from the user to make driver shorter
 
-/*
+/*############################################
     Function: userInputInfo
     Purpose: get necessary data from user to later add to class/list
-*/
+############################################*/
 Data userInputInfo()
 {
     //local variables to get values
@@ -62,11 +61,11 @@ Data userInputInfo()
     
 }
 
-//delete memory functions
-/*
+
+/*############################################
     Function: deleteMemory
     Purpose: delete unwanted memory whenever the resistors are removed from the circuit
-*/
+############################################*/
 void deleteMemory()
 {
     

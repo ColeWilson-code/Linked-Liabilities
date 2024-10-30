@@ -14,6 +14,10 @@
         "vector": "cpp",
         "chrono": "cpp",
         "list": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "new": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp"
     }
 }

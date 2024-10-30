@@ -12,16 +12,17 @@
 
 //library inclusions 
 #include <iostream>
-//#include <list>
 using namespace std; 
+
 
 //template to be used with TemplateHelper class
 template <typename T>
 
-/*
+
+/*############################################
 	Class: ListNode
 	Purpose: template helper class to help move through the list
-*/
+############################################*/
 class ListNode
 {
     private: 
@@ -44,7 +45,10 @@ class ListNode
 			//get data at this location 
         	T getData()
         	{
+				T value; 
 
+				
+				return value; 
         	}
 
         	//iterate forward and backwards
@@ -84,10 +88,10 @@ class ListNode
 
 template <typename T> //put this here again cause it got mad when I took it away
 
-/*
+/*############################################
 	Class: LinkedList
 	Purpose: this is our linked list where we chain together our resistors
-*/
+############################################*/
 class LinkedList
 {
     private: 
@@ -96,7 +100,11 @@ class LinkedList
 		ListNode<T> *tail;	    //List tail pointer
 
     public: 
-        //constructor 
+	
+        /*############################################
+			Function: constructor 
+			Purpose: initialize the list
+		#############################################*/ 
         LinkedList()
         {
 			//creates an empty list by assigning NULL to head and tail
@@ -104,23 +112,29 @@ class LinkedList
             tail = NULL;
         }
 
-        //destructor WORK ON THIS FUNCTION 
-        ~LinkedList();
+        /*############################################
+			Function: destructor 
+			Purpose: say goodbye to the resistors 
+		#############################################*/
+        ~LinkedList()
+		{
+
+		}
 
 
-        /*
+        /*############################################
 			Function: isEmpty
 			Purpose: check if the list is empty or not 
-		*/
+		############################################*/
 		bool isEmpty(){
             return (head == NULL);
         }
 
   
-		/*
+		/*############################################
 			Function: getLength
 			Purpose: find length of list 
-		*/
+		############################################*/
 		int getLength(){
             int counter = 0;
 			//pointer to traverse list 
@@ -143,13 +157,10 @@ class LinkedList
 	        return counter;
         }
 
-        //GET_NODE_VALUE NEED TO CHANGE THIS WHEN WE HAVE RESISTORS SET UP 
-		//double getNodeValue(int){}
-
-		/*
+		/*############################################
 			Function: appendNode
 			Purpose: insert data at the end of the list 
-		*/
+		############################################*/
 		void appendNode(T newData){
 	        ListNode<T> *newNode;  // To point to a new node by declaring a newNode pointer
 	        ListNode<T> *nodePtr;  // To move through the list //traversal popinter
@@ -181,10 +192,10 @@ class LinkedList
 	        }
         }
 
-		/*
+		/*############################################
 			Function: prependNode
 			Purpose: insert data at the beginning of the list 
-		*/
+		############################################*/
 		void prependNode(T newData){
 	        ListNode<T> *newNode;  // To point to a new node by declaring a newNode pointer
 	        ListNode<T> *nodePtr;  // To move through the list //traversal popinter
@@ -217,10 +228,10 @@ class LinkedList
         }
 
 
-		/*
+		/*############################################
 			Function: insertNode
 			Purpose: insert the data a specific node 
-		*/
+		############################################*/
 		void insertNode(int position, T newData){
 	        //traversal pointer
 			ListNode<T> *nodePtr;
@@ -279,10 +290,10 @@ class LinkedList
         }
 		
 
-		/*
+		/*############################################
 			Function: deleteNode
 			Purpose: delete the data a node 
-		*/
+		############################################*/
 		 void deleteNode(int position){
 			ListNode<T> *nodePtr;       // To traverse the list
 			ListNode<T> *previousNode;  // To point to the previous node
@@ -303,7 +314,10 @@ class LinkedList
 				}
 				delete nodePtr;
 				return;
-			}else{
+			}
+
+			else
+			{
 				//traverse to position passed in argument 
 				for(int i = 0; i < position; i++){
 					nodePtr = nodePtr->next; //traversing by setting next to nodePtr and then looping
@@ -323,8 +337,12 @@ class LinkedList
 			}
 		}
 
-
-		void displayList() const{
+		/*############################################
+			Function: displayList
+			Purpose: get all the values in the  list
+		#############################################*/
+		void displayList() const
+		{
 			ListNode<T> *nodePtr;  // To move through the list
 
 			// Position nodePtr at the head of the list.
@@ -346,108 +364,177 @@ class LinkedList
 			}
 		}
 
+		/*############################################
+			Function: getFront
+			Purpose: get value at front of list
+		#############################################*/
+		void getFront()
+		{
+			
+			ListNode<T> *nodePtr;  // To move through the list
 
-        //friend functions
-            //sort
-                //needs to be able to sort in ascending and descending order - NEED BOOL
-                //NEED FIX
-			friend MergeSort(LinkedList myList) 
+			// Position nodePtr at the head of the list.
+			nodePtr = head;
+
+			//if there is nothing there
+			if(nodePtr == NULL)
 			{
-				//use function to get list length
-				int listLength = 0; 						
-				listLength = getLength(); 		
-
-				//initialize the midpoint of list using the length
-				int mid;									
-				mid = listLength/2; 
-
-				//traversal pointer
-				ListNode<T> *nodePtr;
-
-				//new node pointer
-				ListNode<T> *newNode;
-
-				//sort until reach end of list
-				if (nodePtr != NULL)  
-				{
-					//recursively sort left partition
-					MergeSort(myList, mid); 
-
-					//recursively sort right partition
-					MergeSort(myList, mid + 1); 
-
-					//Merge left and right partition in sorted order
-					Merge(myList, mid);
-				}
-			}
-			friend Merge(LinkedList myList, int mid, &nodePtr, &newNode) 
-			{
-				// Dynamically allocates temporary list for merged list
-				T* mergedNumbers = new T; 
-
-				//traversal pointer
-				ListNode<T> *nodePtr;
-
-				ListNode<T> *mergePos;
-
-				ListNode<T> *leftPos; //so many pointers 
-				leftPos = head; 
-				ListNode<T> *rightPos;  
-				rightPos = mergePos + 1;          
-                         
-   
-				// Add smallest element from left or right partition to merged arr
-				while (leftPos <= mid && rightPos != NULL) 
-				{
-					if (leftPos < rightPos) 
-					{
-						mergedNumbers = leftPos;
-						leftPos = leftPos->next;
-					}
-
-					else 
-					{
-						mergedNumbers = rightPos;
-						rightPos = rightPos->next;
-						
-					}
-					nodePtr = nodePtr->next;
-				}
-   
-				// If left partition is not empty, add remaining elements to merged numbers
-				while (leftPos <= mid) 
-				{
-					mergedNumbers = leftPos;
-					leftPos = leftPos->next;
-					mergePos = mergePos->next;
-				}
-				
-				// If right partition is not empty, add remaining elements to merged numbers
-				while (rightPos ) 
-				{
-					mergePos = rightPos;
-					rightPos = rightPos->next;
-					mergePos = mergePos->next;
-				}
-				
-				// Copy merge number back to arr
-				for (mergePos = head; mergePos != NULL; mergePos = mergePos->next) 
-				{
-					mergedNumbers = mergedNumbers;
-				}
-				
-				delete mergedNumbers;
-
+				cout << "The list does not contain any elements." << endl;
+				return; 
 			}
 
-            //stream operator << 
-            friend ostream& operator << (ostream& os, const LinkedList& L)
-            {
-                os << L.data; 
-                
-                return os; 
-            }
+			//get the data at the front of the list
+			cout << nodePtr->data << endl;
 
+			
+		}
+
+		/*############################################
+			Function: pop
+			Purpose: pop the resistor at the front of list
+		#############################################*/
+		void pop()
+		{
+			ListNode<T> *nodePtr;       // To traverse the list
+			ListNode<T> *previousNode;  // To point to the previous node
+
+			// If the list is empty, do nothing.
+			if (!head)
+			{
+				cout << "\nThe list is already empty.\n";
+				return;
+			}
+				
+			//if there is crap there then we do stuff
+			head = nodePtr->next;
+			
+			if(head != NULL)
+			{
+				head->previous == NULL; //update the previous to NULL because nothing is before it 
+			}
+
+			else
+			{
+				tail == NULL; //if list is empty update tail to NULL
+			}
+
+			delete nodePtr;
+			return;
+				
+		}
+		
+		/*############################################
+			Function: StoreResistanceForMerge
+			Purpose: put resistance values from linked list into array, sort the array, thereby sorting list values 
+		#############################################*/
+		int* StoreResistanceForMerge() const
+		{
+			//use getLength function to get size of array
+			int listLength; 
+			listLength = getLength(); 
+
+			//make an array to hold resistor values
+			int resistors = new int[listLength];
+			ListNode<T> *nodePtr;  // To move through the list
+
+			// Position nodePtr at the head of the list.
+			nodePtr = head;
+
+			if(nodePtr == NULL){
+				cout << "The list does not contain any elements." << endl;
+				return; 
+			}
+
+			int i = 0; 
+			// While nodePtr points to a node, traverse the list.
+			while (nodePtr)
+			{
+				// Display the value in this node.
+				cout << nodePtr->data << endl;
+				resistors[i] = nodePtr->next;
+
+				i++;
+				// Move to the next node.
+				nodePtr = nodePtr->next;
+			}
+			return resistors;
+		}
+
+
+		void MergeSort(int arr[], int beg, int end) {
+   			int mid = 0;
+
+   			if (beg < end)  //recursive case (when beg == end then that is base case) 
+   			{
+				mid = (beg + end) / 2;  // Find the midpoint in the partition
+
+				MergeSort(arr, beg, mid); //recursively sort left partition
+				MergeSort(arr, mid + 1, end); //recursively sort right partition
+
+				// Merge left and right partition in sorted order
+				Merge(arr, beg, mid, end);
+   			}
+		}
+
+		void Merge(int arr[], int beg, int mid, int end) {
+   			int mergedSize = end - beg + 1;                // Size of merged partition
+   			int mergePos = 0;                          // Position to insert merged number
+   			int leftPos = 0;                           // Position of elements in left partition
+   			int rightPos = 0;                          // Position of elements in right partition
+   			int* mergedNumbers = new int[mergedSize];  // Dynamically allocates temporary array
+                                              // for merged arr
+   
+   			leftPos = beg;                               // Initialize left partition position
+   			rightPos = mid + 1;                          // Initialize right partition position
+   
+   			// Add smallest element from left or right partition to merged arr
+   			while (leftPos <= mid && rightPos <= end) {
+    			if (arr[leftPos] < arr[rightPos]) {
+        			mergedNumbers[mergePos] = arr[leftPos];
+        			++leftPos;
+      			}
+      			else {
+        			mergedNumbers[mergePos] = arr[rightPos];
+        			++rightPos;
+      			}
+    			++mergePos;
+   			}
+   
+   			// If left partition is not empty, add remaining elements to merged numbers
+   			while (leftPos <= mid) {
+    			mergedNumbers[mergePos] = arr[leftPos];
+    			++leftPos;
+    			++mergePos;
+			}
+   
+			// If right partition is not empty, add remaining elements to merged numbers
+			while (rightPos <= end) {
+    			mergedNumbers[mergePos] = arr[rightPos];
+    			++rightPos;
+    			++mergePos;
+			}
+   
+			// Copy merge number back to arr
+   			for (mergePos = 0; mergePos < mergedSize; ++mergePos) {
+    			arr[beg + mergePos] = mergedNumbers[mergePos];
+			}
+   
+   			delete [] mergedNumbers;
+		}
+		
+
+
+
+		/*############################################
+		Function: stream operator << 
+		Purpose: make outputting easier 
+		#############################################*/
+        friend ostream& operator << (ostream& os, const LinkedList& L)
+        {
+            os << L.data; 
+            
+            return os; 
+        }
+	
 };
-
 #endif 
