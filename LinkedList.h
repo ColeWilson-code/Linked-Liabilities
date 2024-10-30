@@ -520,6 +520,11 @@ class LinkedList
 			}
    
    			delete [] mergedNumbers;
+
+			for(int j = 0; i < arr.size(); i++){
+				cout << arr[i] << " OHMS " << endl; 
+			}
+			delete [] arr;
 		}
 		
 
