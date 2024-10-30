@@ -342,10 +342,8 @@ class LinkedList
 
         //friend functions
             //sort
-                //needs to be able to sort in ascending and descending order
-                //maybe use a bool to specify direction your sorting?
-				//ADDED MERGE SORT EXAMPLE CODE to get an idea, would need to MODIFY/adjust/change for it to be usable
-					//example code organizes array, we need to organize 
+                //needs to be able to sort in ascending and descending order - NEED BOOL
+                //NEED FIX
 			friend MergeSort(LinkedList myList) 
 			{
 				//use function to get list length
@@ -378,54 +376,60 @@ class LinkedList
 			friend Merge(LinkedList myList, int mid, &nodePtr, &newNode) 
 			{
 				// Dynamically allocates temporary list for merged list
-				T* mergedNumbers = new T[listLength];  
-				
-				// Initialize left partition position to beginning of list
-				int leftPos;
-				leftPos = head;              
+				T* mergedNumbers = new T; 
 
-				// Initialize right partition position to midpoint +1      
-				int rightPos;   
-				rightPos = mid + 1;                          
+				//traversal pointer
+				ListNode<T> *nodePtr;
+
+				ListNode<T> *mergePos;
+
+				ListNode<T> *leftPos; //so many pointers 
+				leftPos = head; 
+				ListNode<T> *rightPos;  
+				rightPos = mergePos + 1;          
+                         
    
 				// Add smallest element from left or right partition to merged arr
 				while (leftPos <= mid && rightPos != NULL) 
 				{
-					if (arr[leftPos] < arr[rightPos]) {
-						mergedNumbers[mergePos] = arr[leftPos];
-						++leftPos;
+					if (leftPos < rightPos) 
+					{
+						mergedNumbers = leftPos;
+						leftPos = leftPos->next;
 					}
-					else {
-						mergedNumbers[mergePos] = arr[rightPos];
-						++rightPos;
+
+					else 
+					{
+						mergedNumbers = rightPos;
+						rightPos = rightPos->next;
 						
 					}
-					++mergePos;
+					nodePtr = nodePtr->next;
 				}
    
 				// If left partition is not empty, add remaining elements to merged numbers
 				while (leftPos <= mid) 
 				{
-					mergedNumbers[mergePos] = arr[leftPos];
-					++leftPos;
-					++mergePos;
+					mergedNumbers = leftPos;
+					leftPos = leftPos->next;
+					mergePos = mergePos->next;
 				}
 				
 				// If right partition is not empty, add remaining elements to merged numbers
 				while (rightPos <= end) 
 				{
-					mergedNumbers[mergePos] = arr[rightPos];
-					++rightPos;
-					++mergePos;
+					mergePos = rightPos;
+					rightPos = rightPos->next;
+					mergePos = mergePos->next;
 				}
 				
 				// Copy merge number back to arr
-				for (mergePos = 0; mergePos < mergedSize; ++mergePos) 
+				for (mergePos = 0; mergePos < mergedSize; mergePos = mergePos->next) 
 				{
 					arr[beg + mergePos] = mergedNumbers[mergePos];
 				}
 				
-				delete [] mergedNumbers;
+				delete mergedNumbers;
 
 			}
 
