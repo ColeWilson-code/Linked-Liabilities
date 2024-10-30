@@ -17,8 +17,11 @@ using namespace std;
 
 //template to be used with TemplateHelper class
 template <typename T>
-//Template Helper class is like List Node but seperate class
-//List node same file
+
+/*
+	Class: ListNode
+	Purpose: template helper class to help move through the list
+*/
 class ListNode
 {
     private: 
@@ -78,9 +81,13 @@ class ListNode
             }
 }; 
 
-//LinkedList class
-//need at least 10  
-template <typename T> 
+
+template <typename T> //put this here again cause it got mad when I took it away
+
+/*
+	Class: LinkedList
+	Purpose: this is our linked list where we chain together our resistors
+*/
 class LinkedList
 {
     private: 

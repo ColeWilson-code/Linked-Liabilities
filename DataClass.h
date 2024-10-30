@@ -12,6 +12,11 @@
 //inclusions
 #include "LinkedList.h"
 
+
+/*
+	Class: Data
+	Purpose: stores info about the resistors to be put in linked list
+*/
 class Data
 {
     private: 
