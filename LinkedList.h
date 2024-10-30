@@ -17,15 +17,76 @@ using namespace std;
 
 //template to be used with TemplateHelper class
 template <typename T>
+//Template Helper class is like List Node but seperate class
+//List node same file
+class ListNode
+{
+    private: 
+        //stores data of the template type
+        T data;
+        
+        //holds two pointers to another list node
+        ListNode *next; 
+        ListNode *previous; 
+
+    public: 
+        	
+			//constructor 
+			ListNode(T newData)
+			{
+				//list empty
+				data = newData; 
+			}
+			
+			//get data at this location 
+        	T getData()
+        	{
+
+        	}
+
+        	//iterate forward and backwards
+            //forward 
+            void moveForward()
+            {
+                data = data->next; 
+            }
+
+            //backwards 
+            void moveBackward()
+            {
+                data = data->previous; 
+            }
+
+        //set data, next and previous 
+
+            //data
+            void setData(T var)
+            {
+				data = var; 
+            }
+
+            //next
+            void setNext(T)
+            {
+				
+            }
+
+            //previous
+            void setPrevious(T)
+            {
+
+            }
+}; 
 
 //LinkedList class
-//need at least 10   
+//need at least 10  
+template <typename T> 
 class LinkedList
 {
     private: 
 
-		ListNode *head;		//List head pointer
-		ListNode *tail;	    //List tail pointer
+		ListNode<T> *head;		//List head pointer
+		ListNode<T> *tail;	    //List tail pointer
 
     public: 
         //constructor 
@@ -377,68 +438,5 @@ class LinkedList
             }
 
 };
-
-//template to be used with TemplateHelper class
-template <typename T>
-//Template Helper class is like List Node but seperate class
-//List node same file
-class ListNode
-{
-    private: 
-        //stores data of the template type
-        T data;
-        
-        //holds two pointers to another list node
-        ListNode *next; 
-        ListNode *previous; 
-
-    public: 
-        	
-			//constructor 
-			ListNode(T newData)
-			{
-				//list empty
-				data = newData; 
-			}
-			
-			//get data at this location 
-        	T getData()
-        	{
-
-        	}
-
-        	//iterate forward and backwards
-            //forward 
-            void moveForward()
-            {
-                data = data->next; 
-            }
-
-            //backwards 
-            void moveBackward()
-            {
-                data = data->previous; 
-            }
-
-        //set data, next and previous 
-
-            //data
-            void setData(T var)
-            {
-				data = var; 
-            }
-
-            //next
-            void setNext(T)
-            {
-				
-            }
-
-            //previous
-            void setPrevious(T)
-            {
-
-            }
-}; 
 
 #endif 
