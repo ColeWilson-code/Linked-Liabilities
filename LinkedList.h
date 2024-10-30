@@ -416,7 +416,7 @@ class LinkedList
 				}
 				
 				// If right partition is not empty, add remaining elements to merged numbers
-				while (rightPos <= end) 
+				while (rightPos ) 
 				{
 					mergePos = rightPos;
 					rightPos = rightPos->next;
@@ -424,9 +424,9 @@ class LinkedList
 				}
 				
 				// Copy merge number back to arr
-				for (mergePos = 0; mergePos < mergedSize; mergePos = mergePos->next) 
+				for (mergePos = head; mergePos != NULL; mergePos = mergePos->next) 
 				{
-					arr[beg + mergePos] = mergedNumbers[mergePos];
+					mergedNumbers = mergedNumbers;
 				}
 				
 				delete mergedNumbers;
