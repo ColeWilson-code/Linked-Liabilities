@@ -28,13 +28,13 @@ class Data
 
         //getters 
         string getColorCode(){return colorCode;}
-        int getResistance(){return resistance;}
-        int getPowerRating(){return powerRating;}
+        double getResistance(){return resistance;}
+        double getPowerRating(){return powerRating;}
 
         //setters 
         void setColorCode(string newColorCode){colorCode = newColorCode;}
-        void setResistance(int newResistance){resistance = newResistance;}
-        void setPowerRating(int newPowerRating){powerRating = newPowerRating;}
+        void setResistance(double newResistance){resistance = newResistance;}
+        void setPowerRating(double newPowerRating){powerRating = newPowerRating;}
 
 
         //comparison and stream operator overloads
@@ -51,22 +51,15 @@ class Data
             // <
             friend bool operator < (const Data& D1, const Data& D2)
             {
-                
-                //check if resistance less than other
-                if (D1.resistance < D2.resistance)
-                    return true; 
-
+                return (D1.resistance < D2.resistance);
                 //power and color less important 
-
             }
 
             // >
             friend bool operator > (const Data& D1, const Data& D2)
             {
                 //check if resistance greater than other 
-                if (D1.resistance > D2.resistance)
-                    return true; 
-
+                return (D1.resistance > D2.resistance);
                 //power and color less important
             }
 
@@ -74,9 +67,7 @@ class Data
             friend bool operator == (const Data& D1, const Data& D2)
             {
                 //check if resistance is equal
-                if (D1.resistance == D2.resistance)
-                    return true; 
-
+                return (D1.resistance == D2.resistance);
                 //power and color less important
             }
 

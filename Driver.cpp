@@ -67,17 +67,16 @@ int main ()
                 }
                 
                 //just print the resistors as is 
-                if (sortChoice = 'n')
+                if (sortChoice == 'n')
                 {
                     resistorList.displayList();
                 }
 
                 //otherwise print it sorted using funny functions
-                else if (sortChoice = 'y')
+                else if (sortChoice == 'y')
                 {   
                     int length = resistorList.getLength();
-                    int* arr = resistorList.StoreResistanceForMerge();
-                    resistorList.MergeSort(arr, 0, (length - 1));
+                    resistorList.StoreResistanceForMerge(length);
                 }
 
 

@@ -25,7 +25,6 @@ Data userInputInfo()
 
     //resistance 
     cout << "RESISTANCE (as an number): "; 
-    cin >> resistance; 
     cin.ignore(); 
         //input validation
             while(!(cin >> resistance))
@@ -37,8 +36,7 @@ Data userInputInfo()
             }
 
     //power rating 
-    cout << "\nPOWER RATING (as an number): "; 
-    cin >> powerRating; 
+    cout << "\nPOWER RATING (as an number): ";  
     cin.ignore(); 
         //input validation
             while(!(cin >> powerRating))

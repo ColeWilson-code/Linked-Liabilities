@@ -45,12 +45,18 @@ class ListNode
 			//get data at this location 
         	T getData()
         	{
-				T value; 
-
-				
-				return value; 
+				return data; 
         	}
 
+			ListNode* getNext(){
+				return next;
+			}
+
+			ListNode* getPrevious(){
+				return previous;
+			}
+
+		/*
         	//iterate forward and backwards
             //forward 
             void moveForward()
@@ -63,6 +69,7 @@ class ListNode
             {
                 data = data->previous; 
             }
+		*/
 
         //set data, next and previous 
 
@@ -73,15 +80,15 @@ class ListNode
             }
 
             //next
-            void setNext(T var)
+            void setNext(ListNode* newNext)
             {
-				data->next = var; 
+				data->next = newNext; 
             }
 
             //previous
-            void setPrevious(T var)
+            void setPrevious(ListNode* newPrevious)
             {
-				data->previous = var; 
+				data->previous = newPrevious; 
             }
 }; 
 
@@ -295,7 +302,7 @@ class LinkedList
 			Purpose: delete the data a node 
 		############################################*/
 		 void deleteNode(int position){
-			ListNode<T> *nodePtr;       // To traverse the list
+			ListNode<T> *nodePtr = head;       // To traverse the list
 			ListNode<T> *previousNode;  // To point to the previous node
 
 			// If the list is empty, do nothing.
@@ -357,10 +364,10 @@ class LinkedList
 			while (nodePtr)
 			{
 				// Display the value in this node.
-				cout << nodePtr->data << endl;
+				cout << nodePtr->getData() << endl;
 
 				// Move to the next node.
-				nodePtr = nodePtr->next;
+				nodePtr = nodePtr->getNext();
 			}
 		}
 
@@ -368,7 +375,7 @@ class LinkedList
 			Function: getFront
 			Purpose: get value at front of list
 		#############################################*/
-		void getFront()
+		T getFront()
 		{
 			
 			ListNode<T> *nodePtr;  // To move through the list
@@ -384,9 +391,8 @@ class LinkedList
 			}
 
 			//get the data at the front of the list
-			cout << nodePtr->data << endl;
+			return nodePtr->getData();
 
-			
 		}
 
 		/*############################################
@@ -427,14 +433,14 @@ class LinkedList
 			Function: StoreResistanceForMerge
 			Purpose: put resistance values from linked list into array, sort the array, thereby sorting list values 
 		#############################################*/
-		int* StoreResistanceForMerge() const
+		void StoreResistanceForMerge(int length) const
 		{
 			//use getLength function to get size of array
 			int listLength; 
 			listLength = getLength(); 
 
 			//make an array to hold resistor values
-			int resistors = new int[listLength];
+			int* resistors = new int[listLength];
 			ListNode<T> *nodePtr;  // To move through the list
 
 			// Position nodePtr at the head of the list.
@@ -449,15 +455,15 @@ class LinkedList
 			// While nodePtr points to a node, traverse the list.
 			while (nodePtr)
 			{
-				// Display the value in this node.
-				cout << nodePtr->data << endl;
-				resistors[i] = nodePtr->next;
+				resistors[i] = nodePtr->resistance;
 
-				i++;
 				// Move to the next node.
 				nodePtr = nodePtr->next;
+
+				i++;
 			}
-			return resistors;
+			MergeSort(resistors,0, listLength);
+			delete [] resistors;
 		}
 
 
@@ -518,27 +524,29 @@ class LinkedList
    			for (mergePos = 0; mergePos < mergedSize; ++mergePos) {
     			arr[beg + mergePos] = mergedNumbers[mergePos];
 			}
-   
-   			delete [] mergedNumbers;
 
-			for(int j = 0; i < arr.size(); i++){
-				cout << arr[i] << " OHMS " << endl; 
+			for(int j = 0; i < mergedSize; i++){
+				cout << mergedNumbers[i] << " OHMS " << endl; 
 			}
-			delete [] arr;
+			delete [] mergedNumbers;
 		}
 		
-
-
-
 		/*############################################
 		Function: stream operator << 
 		Purpose: make outputting easier 
 		#############################################*/
         friend ostream& operator << (ostream& os, const LinkedList& L)
         {
-            os << L.data; 
-            
-            return os; 
+            ListNode<T> *nodePtr;  // To move through the list
+
+			// Position nodePtr at the head of the list.
+			nodePtr = head;
+			
+			while(nodePtr){
+				os << nodePtr->getData() << " ";
+            	nodePtr = nodePtr->getNext();
+			}
+			return os;
         }
 	
 };
