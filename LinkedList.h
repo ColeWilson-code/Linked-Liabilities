@@ -39,7 +39,8 @@ class ListNode
 			ListNode()
 			{
 				//list empty
-				data = NULL; 
+				next = NULL;
+				previous = NULL;
 			}
 			
 			//get data at this location 
@@ -82,13 +83,13 @@ class ListNode
             //next
             void setNext(ListNode* newNext)
             {
-				data->next = newNext; 
+				next = newNext; 
             }
 
             //previous
             void setPrevious(ListNode* newPrevious)
             {
-				data->previous = newPrevious; 
+				previous = newPrevious; 
             }
 }; 
 
@@ -125,7 +126,9 @@ class LinkedList
 		#############################################*/
         ~LinkedList()
 		{
-
+			while(!isEmpty()){
+				pop();
+			}
 		}
 
 
@@ -137,18 +140,22 @@ class LinkedList
             return (head == NULL);
         }
 
+		ListNode<T>* getHead() const {
+    		return head;
+		}
+
   
 		/*############################################
 			Function: getLength
 			Purpose: find length of list 
 		############################################*/
-		int getLength(){
+		int getLength() const{
             int counter = 0;
 			//pointer to traverse list 
 	        ListNode<T> *nodePtr;
 
 			//put traversal pointer at head
-	        nodePtr = head;
+	        nodePtr = getHead();
 	
 	        //list traversal
 			//loop while the traversal pointer is not at the tail
@@ -156,7 +163,7 @@ class LinkedList
 	        {
 		        counter++;
 				//update the traversal pointer to point to the next node 
-		        nodePtr = nodePtr->next;
+		        nodePtr = nodePtr->getNext();
 				//check if traversal is pointing to tail to make sure last increment happens
 		        if (nodePtr == tail)
 		    	    counter++;
@@ -175,14 +182,14 @@ class LinkedList
 	        // Allocate a new node and store num there.
 	        newNode = new ListNode<T>(newData);
             //Resistor Values setData
-	        newNode->data = newData;
+			newNode->setData(newData);
 
 			//setting next and previous to NULL
-	        newNode->next = NULL;
-	        newNode->previous = NULL;
+			newNode->setNext(NULL);
+	        newNode->setPrevious(NULL);
 
 	        // If there are no nodes in the list make newNode the first node.
-	        if (head == NULL ) 
+	        if (head == NULL) 
 	        {
 				//both head and tail
 	        	head = newNode;
@@ -191,8 +198,8 @@ class LinkedList
 	        else  // Otherwise, insert newNode at end.
 	        {
 		        //set the current last node's next pointer to the new node
-	        	tail->next = newNode;
-	        	newNode->previous = tail;
+	        	tail->setNext(newNode);
+				newNode->setPrevious(tail);
 		
 	        	//now the tail is the new node
 	        	tail = newNode;
@@ -205,16 +212,16 @@ class LinkedList
 		############################################*/
 		void prependNode(T newData){
 	        ListNode<T> *newNode;  // To point to a new node by declaring a newNode pointer
-	        ListNode<T> *nodePtr;  // To move through the list //traversal popinter
+	        ListNode<T> *nodePtr = getHead();  // To move through the list //traversal popinter
 
 	        // Allocate a new node and store num there.
 	        newNode = new ListNode<T>(newData);
             //Resistor Values setData
-	        newNode->data = newData;
+			newNode->setData(newData);
 
 			//setting next and previous to NULL
-	        newNode->next = NULL;
-	        newNode->previous = NULL;
+	        newNode->setNext(NULL);
+	        newNode->setPrevious(NULL);
 
 	        // If there are no nodes in the list make newNode the first node.
 	        if (head == NULL ) 
@@ -226,8 +233,8 @@ class LinkedList
 	        else  // Otherwise, insert newNode at end.
 	        {
 		        //set the current first node's previous pointer to the new node
-	        	tail->next = head;
-	        	newNode->previous = newNode;
+	        	newNode->setNext(head);
+				head->setPrevious(newNode);		
 		
 	        	//now the tail is the new node
 	        	head = newNode;
@@ -246,7 +253,7 @@ class LinkedList
 	        ListNode<T> *newNode;
 	
 	        newNode = new ListNode<T>(newData);
-	        newNode->data = newData;
+			newNode->setData(newData);
 	
 	        if(!head)
 	        {
@@ -260,12 +267,12 @@ class LinkedList
 	        }
 	        else
 	        {
-	        	nodePtr = head;
+	        	nodePtr = getHead();
 	        	int nodeCount = 0;
 	        	if(position == 0)
 	        	{
-	        		newNode->next = head;
-	        		head->previous = newNode;
+	        		newNode->setNext(head);
+					head->setPrevious(newNode);
 	        		head = newNode;
 	        	}
 	        	while(nodePtr != tail && nodeCount < position)
@@ -273,7 +280,7 @@ class LinkedList
 	        		nodeCount++;
 	        		if(nodeCount == position)
 	        			break;
-	        		nodePtr = nodePtr->next;
+	        		nodePtr = nodePtr->getNext();
 	        	}
 		
 	        	//now nodePtr is positioned 1 node BEFORE the node we want to insert
@@ -281,17 +288,17 @@ class LinkedList
 	        		tail = newNode;
 
 	        	//set up newNode's links
-	        	newNode->next = nodePtr->next;
-	        	newNode->previous = nodePtr;
+	        	newNode->setNext(nodePtr->getNext());
+				newNode->setPrevious(nodePtr);
 
 	        	//change the node on the left
-	        	nodePtr->next = newNode;
+	        	nodePtr->setNext(newNode);
 		
 	        	//change the node on the right (if there is a node on the right)
 	        	if(newNode->next)
 		        {
-		        	nodePtr = newNode->next; 
-		        	nodePtr->previous = newNode;
+		        	nodePtr = newNode->getNext(); 
+					nodePtr->setPrevious(newNode);
 		        }
 	        }
         }
@@ -302,7 +309,7 @@ class LinkedList
 			Purpose: delete the data a node 
 		############################################*/
 		 void deleteNode(int position){
-			ListNode<T> *nodePtr = head;       // To traverse the list
+			ListNode<T> *nodePtr = getHead();       // To traverse the list
 			ListNode<T> *previousNode;  // To point to the previous node
 
 			// If the list is empty, do nothing.
@@ -313,11 +320,11 @@ class LinkedList
 			// Determine if the first node is the one.
 			if (position == 0)
 			{
-				head = nodePtr->next;
+				head = nodePtr->getNext(); 
 				if(head != NULL){
-					head->previous == NULL; //update the previous to NULL because nothing is before it 
+					head->setPrevious(NULL); //update the previous to NULL because nothing is before it 
 				}else{
-					tail == NULL; //if list is empty update tail to NULL
+					tail = NULL; //if list is empty update tail to NULL
 				}
 				delete nodePtr;
 				return;
@@ -327,17 +334,17 @@ class LinkedList
 			{
 				//traverse to position passed in argument 
 				for(int i = 0; i < position; i++){
-					nodePtr = nodePtr->next; //traversing by setting next to nodePtr and then looping
+					nodePtr = nodePtr->getNext(); //traversing by setting next to nodePtr and then looping
 				}
 
-				if(nodePtr->previous != NULL){
-					nodePtr->previous_>next = nodePtr->next; //bypasses the current node in the next direction, this hurts my head
+				if(nodePtr->getPrevious() != NULL){
+					nodePtr->getPrevious()->setNext(nodePtr->getNext()); //bypasses the current node in the next direction, this hurts my head
 				}
-				if(nodePtr->next != NULL){
-					nodePtr->next->previous = nodePtr->previous; //bypasses the position node in the previous direction, this hurts my head
+				if(nodePtr->getNext() != NULL){
+					nodePtr->getNext()->setPrevious(nodePtr->getPrevious()); //bypasses the position node in the previous direction, this hurts my head
 				}
 				if(nodePtr == tail){
-					tail = nodePtr->previous; //update tail to be the previous node
+					tail = nodePtr->getPrevious(); //update tail to be the previous node
 				}
 				delete nodePtr;
 				return;
@@ -353,7 +360,7 @@ class LinkedList
 			ListNode<T> *nodePtr;  // To move through the list
 
 			// Position nodePtr at the head of the list.
-			nodePtr = head;
+			nodePtr = getHead();
 
 			if(nodePtr == NULL){
 				cout << "The list does not contain any elements." << endl;
@@ -381,13 +388,13 @@ class LinkedList
 			ListNode<T> *nodePtr;  // To move through the list
 
 			// Position nodePtr at the head of the list.
-			nodePtr = head;
+			nodePtr = getHead();
 
 			//if there is nothing there
 			if(nodePtr == NULL)
 			{
 				cout << "The list does not contain any elements." << endl;
-				return; 
+				return NULL; 
 			}
 
 			//get the data at the front of the list
@@ -401,7 +408,7 @@ class LinkedList
 		#############################################*/
 		void pop()
 		{
-			ListNode<T> *nodePtr;       // To traverse the list
+			ListNode<T> *nodePtr = getHead();       // To traverse the list
 			ListNode<T> *previousNode;  // To point to the previous node
 
 			// If the list is empty, do nothing.
@@ -412,16 +419,16 @@ class LinkedList
 			}
 				
 			//if there is crap there then we do stuff
-			head = nodePtr->next;
+			head = nodePtr->getNext();
 			
 			if(head != NULL)
 			{
-				head->previous == NULL; //update the previous to NULL because nothing is before it 
+				head->setPrevious(NULL);
 			}
 
 			else
 			{
-				tail == NULL; //if list is empty update tail to NULL
+				tail = NULL; //if list is empty update tail to NULL
 			}
 
 			delete nodePtr;
@@ -435,19 +442,16 @@ class LinkedList
 		#############################################*/
 		void StoreResistanceForMerge(int length) const
 		{
-			//use getLength function to get size of array
-			int listLength; 
-			listLength = getLength(); 
+			//use getLength function to get size of array 
+			int listLength = getLength(); 
 
 			//make an array to hold resistor values
 			int* resistors = new int[listLength];
-			ListNode<T> *nodePtr;  // To move through the list
-
-			// Position nodePtr at the head of the list.
-			nodePtr = head;
+			ListNode<T> *nodePtr = getHead();  // To move through the list
 
 			if(nodePtr == NULL){
 				cout << "The list does not contain any elements." << endl;
+				delete [] resistors;
 				return; 
 			}
 
@@ -455,10 +459,10 @@ class LinkedList
 			// While nodePtr points to a node, traverse the list.
 			while (nodePtr)
 			{
-				resistors[i] = nodePtr->resistance;
+				resistors[i] = nodePtr->getData().getResistance();
 
 				// Move to the next node.
-				nodePtr = nodePtr->next;
+				nodePtr = nodePtr->getNext();
 
 				i++;
 			}
@@ -525,8 +529,8 @@ class LinkedList
     			arr[beg + mergePos] = mergedNumbers[mergePos];
 			}
 
-			for(int j = 0; i < mergedSize; i++){
-				cout << mergedNumbers[i] << " OHMS " << endl; 
+			for(int j = 0; j < mergedSize; j++){
+				cout << mergedNumbers[j] << " OHMS " << endl; 
 			}
 			delete [] mergedNumbers;
 		}
@@ -540,7 +544,7 @@ class LinkedList
             ListNode<T> *nodePtr;  // To move through the list
 
 			// Position nodePtr at the head of the list.
-			nodePtr = head;
+			nodePtr = getHead();
 			
 			while(nodePtr){
 				os << nodePtr->getData() << " ";
