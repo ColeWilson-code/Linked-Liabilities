@@ -1,6 +1,6 @@
 
-output: Driver.o LinkedList.o DataClass.o 
-	g++ Driver.o LinkedList.o DataClass.o  -o output
+output: Driver.o DataClass.o 
+	g++ Driver.o DataClass.o  -o output
 
 Driver.o: Driver.cpp
 	g++ -c Driver.cpp
