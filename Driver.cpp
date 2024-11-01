@@ -18,11 +18,12 @@ int main ()
     int subChoice = 0; 
     int addChoice, removeChoice;  
     Data newResistor;
+
+    cout << "\n\nHello! Welcome to the Resitor Series Circuit Simplifier Program!"; 
     
     //repeat program until user finished 
-    do 
+    do
     {
-        cout << "\n\nHello! Welcome to the Resitor Series Circuit Simplifier Program!"; 
 
         cout << "\n\n1. View existing resistors"; 
         cout << "\n2. Add a new resitor"; 
@@ -30,9 +31,7 @@ int main ()
         cout << "\n4. Simplify the circuit"; 
         cout << "\n5. Exit Program"; 
 
-        cout << "\n\nPlease enter an integer from the menu: "; 
-        cin >> menuChoice; 
-        cin.ignore(); 
+        cout << "\n\nPlease enter an integer from the menu: ";  
 
         //input validation
             while(!(cin >> menuChoice) || (menuChoice < 1 || menuChoice > 5))
@@ -48,16 +47,13 @@ int main ()
 
             //view existing resistors
             case 1: 
-                char sortChoice; 
+                int sortChoice; 
 
                 cout << "\n\nWould you like to sort your resistors by resistance?"; 
-                cout << "\nPlease enter y/n: "; 
-
-                cin >> sortChoice; 
-                cin.ignore(); 
+                cout << "\nPlease enter 1 for yes and 2 for no: "; 
 
                 //input validation
-                while(!(cin >> sortChoice) || (sortChoice != 'y' || sortChoice != 'n'))
+                while(!(cin >> sortChoice) || (sortChoice != 1 && sortChoice != 2))
                 {
                     //have user input another input 
                     cout << "\nPlease enter a valid choice: ";
@@ -66,18 +62,14 @@ int main ()
                 }
                 
                 //just print the resistors as is 
-                if (sortChoice == 'n')
+                if (sortChoice == 2)
                 {
                     resistorList.displayList();
                 }
-
-                //otherwise print it sorted using funny functions
-                else if (sortChoice == 'y')
+                else if (sortChoice == 1) //otherwise print it sorted using funny functions
                 {   
-                    int length = resistorList.getLength();
-                    resistorList.StoreResistanceForMerge(length);
+                    resistorList.displaySortedResistance();
                 }
-
 
                 break; 
 
@@ -94,9 +86,6 @@ int main ()
                 cout << "\n3. At a specific location"; 
 
                 cout << "\n\nPlease enter an integer from the menu: "; 
-                cin >> subChoice; 
-                cin.ignore(); 
-
                 //input validation
                 while(!(cin >> subChoice) || (subChoice < 1 || subChoice > 3))
                 {
@@ -122,8 +111,6 @@ int main ()
                     //at a specific spot
                     case 3: 
                         cout << "\n\nPlease enter the position of the resistor in the circuit as an integer between 0 and " << resistorList.getLength() << ": "; 
-                        cin >> addChoice; 
-                        cin.ignore(); 
 
                         //input validation
                         while(!(cin >> addChoice) || (addChoice < 0 || addChoice > resistorList.getLength()))
@@ -135,10 +122,8 @@ int main ()
                         }
 
                         resistorList.insertNode(addChoice,newResistor);
-
                         break; 
                 }
-
                 break; 
 
             //remove an existing resistor 
@@ -147,8 +132,6 @@ int main ()
                 cout << "\nNote: this will remove the resistors completely without simplifying it with the circuit"; 
 
                 cout << "\n\nPlease enter the resistance of the resistors in the circuit you want to remove: "; 
-                cin >> removeChoice; 
-                cin.ignore(); 
 
                 //input validation
                 while(!(cin >> removeChoice))
@@ -160,25 +143,21 @@ int main ()
                 }
 
                 resistorList.deleteNode(removeChoice);
-
-            break; 
+                break; 
 
             //Simplify the circuit 
             case 4: 
                //pop repeated until whole circuit simplified
-               resistorList.pop(); 
-                
-            break; 
+               resistorList.pop();     
+                break; 
 
             //Exit program 
             case 5: 
                 //simple goodbye message
                 cout << "\n\nThank you for using the Resistor Series Circuit Simplifier Program!"; 
-                cout << "\n\nRemember to like, share, and subscribe!"; //the funny (unless this program actually takes off)
-
-            break; 
+                cout << "\n\nRemember to like, share, and subscribe!" << endl; //the funny (unless this program actually takes off)
+                break; 
             }
-
 
     } while (menuChoice != 5); //end do while loop 
 

@@ -24,8 +24,7 @@ Data userInputInfo()
     cout << "\n\nPlease enter the following information of your resistor: \n\n"; 
 
     //resistance 
-    cout << "RESISTANCE (as an number): "; 
-    cin.ignore(); 
+    cout << "RESISTANCE (as an number): ";  
         //input validation
             while(!(cin >> resistance))
             {
@@ -47,6 +46,7 @@ Data userInputInfo()
                 cin.ignore(100, '\n'); 
             }
 
+    cin.ignore();
     //color code
     cout << "\nRESISTOR COLOR CODE (as one/more words): "; 
     getline(cin, colorCode); 

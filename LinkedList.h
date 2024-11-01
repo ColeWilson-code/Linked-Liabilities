@@ -435,7 +435,7 @@ class LinkedList
 			Function: StoreResistanceForMerge
 			Purpose: put resistance values from linked list into array, sort the array, thereby sorting list values 
 		#############################################*/
-		void StoreResistanceForMerge(int length) const 
+		void displaySortedResistance() const 
 		{
 			//use getLength function to get size of array 
 			int listLength = getLength(); 
@@ -461,7 +461,14 @@ class LinkedList
 
 				i++;
 			}
-			MergeSort(resistors,0, listLength);
+			MergeSort(resistors,0, listLength-1);
+
+			cout << "\nSorted Resistor Values" << endl;
+
+			for(int j = 0; j < listLength; j++){
+				cout << resistors[j] << " OHMS " << endl; 
+			}
+
 			delete [] resistors;
 		}
 
@@ -524,9 +531,6 @@ class LinkedList
     			arr[beg + mergePos] = mergedNumbers[mergePos];
 			}
 
-			for(int j = 0; j < mergedSize; j++){
-				cout << mergedNumbers[j] << " OHMS " << endl; 
-			}
 			delete [] mergedNumbers;
 		}
 		
