@@ -58,22 +58,7 @@ class ListNode
 				return previous;
 			}
 
-		/*
-        	//iterate forward and backwards
-            //forward 
-            void moveForward()
-            {
-                data = data->next; 
-            }
-
-            //backwards 
-            void moveBackward()
-            {
-                data = data->previous; 
-            }
-		*/
-
-        //set data, next and previous 
+        	//set data, next and previous 
 
             //data
             void setData(T var)
@@ -92,6 +77,10 @@ class ListNode
             {
 				previous = newPrevious; 
             }
+
+			~ListNode(){
+				delete data;
+			}
 }; 
 
 
