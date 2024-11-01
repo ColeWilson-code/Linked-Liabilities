@@ -76,7 +76,6 @@ class ListNode
             }
 
 			~ListNode(){
-				delete data;
 			}
 }; 
 
