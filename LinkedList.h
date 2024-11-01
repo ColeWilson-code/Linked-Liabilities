@@ -362,6 +362,7 @@ class LinkedList
 		void displayList() const
 		{
 			ListNode<T> *nodePtr = this->getHead();  // To move through the list
+			int index = 0;
 
 			if(nodePtr == NULL){
 				cout << "The list does not contain any elements." << endl;
@@ -372,7 +373,7 @@ class LinkedList
 			while (nodePtr)
 			{
 				// Display the value in this node.
-				cout << nodePtr->getData() << endl;
+				cout << "[" << index + 1 << "]" << nodePtr->getData() << endl;
 
 				// Move to the next node.
 				nodePtr = nodePtr->getNext();
@@ -433,6 +434,44 @@ class LinkedList
 			return;
 				
 		}
+
+		/*############################################
+			Function: simplifyCircuit
+			Purpose: pop the resistor at the front of list
+		#############################################*/
+
+		void simplifyCircuit(){
+			double totalResistance = 0;
+			double minPowerRating = 100000000; //high value so that real power rating resets it
+			double currentPowerRating;
+			if(isEmpty()){
+				cout << "The list is empty and cannot be simplified." << endl;
+				return;
+			}
+
+			while(!isEmpty()){
+				ListNode<T> *nodePtr = this->getHead();
+
+				totalResistance += nodePtr->getData().getResistance(); 
+        		currentPowerRating = nodePtr->getData().getPowerRating(); 
+				if(currentPowerRating < minPowerRating){
+					minPowerRating = currentPowerRating;
+				}
+
+				pop();
+			}
+			
+			T newResistor;
+			newResistor.setResistance(totalResistance);
+			newResistor.setPowerRating(minPowerRating); //load the minimum power rating
+			newResistor.setColorCode("Rainbow"); //too much work to calculate the actual power rating so why not rainbow
+
+			appendNode(newResistor);
+
+			cout << "Circuit simplified with a total reistance of " << totalResistance << " and a power rating of " << minPowerRating << ".\n";
+
+		}
+
 		
 		/*############################################
 			Function: StoreResistanceForMerge

@@ -28,7 +28,7 @@ int main ()
         cout << "\n\n1. View existing resistors"; 
         cout << "\n2. Add a new resitor"; 
         cout << "\n3. Remove an existing resistor"; 
-        cout << "\n4. Simplify the circuit"; 
+        cout << "\n4. Simplify circuit"; 
         cout << "\n5. Exit Program"; 
 
         cout << "\n\nPlease enter an integer from the menu: ";  
@@ -128,7 +128,7 @@ int main ()
 
             //remove an existing resistor 
             case 3: 
-                cout << "\n\nWhat resistor would you like to remove from the circuit?"; 
+                cout << "\n\nWhat resistor would you like to remove from the circuit? Enter the index"; 
                 cout << "\nNote: this will remove the resistors completely without simplifying it with the circuit"; 
 
                 cout << "\n\nPlease enter the resistance of the resistors in the circuit you want to remove: "; 
@@ -147,8 +147,8 @@ int main ()
 
             //Simplify the circuit 
             case 4: 
-               //pop repeated until whole circuit simplified
-               resistorList.pop();     
+                //pop repeated until whole circuit simplified
+                resistorList.simplifyCircuit();     
                 break; 
 
             //Exit program 
