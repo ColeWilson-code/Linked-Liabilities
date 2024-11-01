@@ -64,7 +64,7 @@ Data userInputInfo()
     Function: deleteMemory
     Purpose: delete unwanted memory whenever the resistors are removed from the circuit
 ############################################*/
-void deleteMemory()
+void deleteMemory(Data* vals)
 {
-    
+    delete [] vals;
 }
