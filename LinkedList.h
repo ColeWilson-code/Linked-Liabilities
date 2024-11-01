@@ -9,15 +9,12 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
-
 //library inclusions 
 #include <iostream>
 using namespace std; 
 
-
 //template to be used with TemplateHelper class
 template <typename T>
-
 
 /*############################################
 	Class: ListNode
@@ -83,7 +80,6 @@ class ListNode
 			}
 }; 
 
-
 template <typename T> //put this here again cause it got mad when I took it away
 
 /*############################################
@@ -138,7 +134,6 @@ class LinkedList
     		return head;
 		}
 
-  
 		/*############################################
 			Function: getLength
 			Purpose: find length of list 
@@ -431,7 +426,6 @@ class LinkedList
 			Function: simplifyCircuit
 			Purpose: pop the resistor at the front of list
 		#############################################*/
-
 		void simplifyCircuit(){
 			double totalResistance = 0;
 			double minPowerRating = 100000000; //high value so that real power rating resets it
@@ -464,10 +458,9 @@ class LinkedList
 
 		}
 
-		
 		/*############################################
 			Function: StoreResistanceForMerge
-			Purpose: put resistance values from linked list into array, sort the array, thereby sorting list values 
+			Purpose: put resistance values from linked list into array, sort the array, thereby sorting list values and printing 
 		#############################################*/
 		void displaySortedResistance() const 
 		{
@@ -506,7 +499,10 @@ class LinkedList
 			delete [] resistors;
 		}
 
-
+		/*############################################
+			Function: MergeSort
+			Purpose: merge sort helper function 
+		#############################################*/
 		void MergeSort(int arr[], int beg, int end) const {
    			int mid = 0;
 
@@ -522,6 +518,10 @@ class LinkedList
    			}
 		}
 
+		/*############################################
+			Function: Merge
+			Purpose: merge sort full code
+		#############################################*/
 		void Merge(int arr[], int beg, int mid, int end) const {
    			int mergedSize = end - beg + 1;                // Size of merged partition
    			int mergePos = 0;                          // Position to insert merged number

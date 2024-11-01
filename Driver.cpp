@@ -2,7 +2,8 @@
     Title: Driver.cpp
     Authors: Jack Bender, Cole Wilson
     Date: 11-01-24
-    Purpose: provide a way to run the program 
+    GitHub Link: https://github.com/ColeWilson-code/Resistor-Series-Circuit-Simplifier
+    Purpose: This program allows one to put resistors in series and simplify or remove. Driver navigates the program. 
 */
 
 //library inclusions
