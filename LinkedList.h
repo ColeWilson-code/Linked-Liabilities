@@ -161,15 +161,18 @@ class LinkedList
 	
 	        //list traversal
 			//loop while the traversal pointer is not at the tail
-	        while(nodePtr != tail)
+	        while(nodePtr)
 	        {
 		        counter++;
 				//update the traversal pointer to point to the next node 
 		        nodePtr = nodePtr->getNext();
+				/*
 				//check if traversal is pointing to tail to make sure last increment happens
 		        if (nodePtr == tail)
 		    	    counter++;
-	        }
+				*/
+	        }		
+
 	        return counter;
         }
 
