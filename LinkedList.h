@@ -29,12 +29,13 @@ class ListNode
         //stores data of the template type
         T data;
         
-        //holds two pointers to another list node
-        ListNode *next; 
-        ListNode *previous; 
 
     public: 
         	
+			//holds two pointers to another list node
+			ListNode *next; 
+			ListNode *previous; 
+
 			//constructor 
 			ListNode()
 			{
@@ -180,7 +181,7 @@ class LinkedList
 	        ListNode<T> *nodePtr;  // To move through the list //traversal popinter
 
 	        // Allocate a new node and store num there.
-	        newNode = new ListNode<T>(newData);
+	        newNode = new ListNode<T>;
             //Resistor Values setData
 			newNode->setData(newData);
 
@@ -215,7 +216,7 @@ class LinkedList
 	        ListNode<T> *nodePtr = getHead();  // To move through the list //traversal popinter
 
 	        // Allocate a new node and store num there.
-	        newNode = new ListNode<T>(newData);
+	        newNode = new ListNode<T>;
             //Resistor Values setData
 			newNode->setData(newData);
 
@@ -252,7 +253,7 @@ class LinkedList
 			//new node pointer
 	        ListNode<T> *newNode;
 	
-	        newNode = new ListNode<T>(newData);
+	        newNode = new ListNode<T>;
 			newNode->setData(newData);
 	
 	        if(!head)
@@ -440,7 +441,7 @@ class LinkedList
 			Function: StoreResistanceForMerge
 			Purpose: put resistance values from linked list into array, sort the array, thereby sorting list values 
 		#############################################*/
-		void StoreResistanceForMerge(int length) const
+		void StoreResistanceForMerge(int length) const 
 		{
 			//use getLength function to get size of array 
 			int listLength = getLength(); 

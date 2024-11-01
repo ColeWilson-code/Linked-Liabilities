@@ -16,7 +16,7 @@
 Data userInputInfo()
 {
     //local variables to get values
-    int resistance, powerRating; 
+    double resistance, powerRating; 
     string colorCode; 
     Data newResistor; 
 
