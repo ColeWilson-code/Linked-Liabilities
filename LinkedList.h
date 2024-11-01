@@ -313,13 +313,15 @@ class LinkedList
 			Purpose: delete the data a node 
 		############################################*/
 		 void deleteNode(int position){
+			
 			ListNode<T> *nodePtr = this->getHead();       // To traverse the list
 			ListNode<T> *previousNode;  // To point to the previous node
 
 			// If the list is empty, do nothing.
-			if (!head)
+			if (!head){
 				cout << "The list is already empty.\n";
 				return;
+			}
 
 			// Determine if the first node is the one.
 			if (position == 0)
@@ -377,6 +379,7 @@ class LinkedList
 
 				// Move to the next node.
 				nodePtr = nodePtr->getNext();
+				index++;
 			}
 		}
 

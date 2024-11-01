@@ -128,13 +128,14 @@ int main ()
 
             //remove an existing resistor 
             case 3: 
-                cout << "\n\nWhat resistor would you like to remove from the circuit? Enter the index"; 
-                cout << "\nNote: this will remove the resistors completely without simplifying it with the circuit"; 
+                cout << "\n\nPlease enter the position of the resistor in the circuit as an integer between 0 and " << resistorList.getLength() << ": "; 
+                cout << "\nNote: this will remove the resistors completely without simplifying it with the circuit\n"; 
+                resistorList.displayList();
 
                 cout << "\n\nPlease enter the resistance of the resistors in the circuit you want to remove: "; 
 
                 //input validation
-                while(!(cin >> removeChoice))
+                while((!(cin >> removeChoice)) || ((removeChoice < 0) && (removeChoice > resistorList.getLength())))
                 {
                     //have user input another input 
                     cout << "\nPlease enter a valid choice: ";
@@ -142,7 +143,7 @@ int main ()
                     cin.ignore(100, '\n'); 
                 }
 
-                resistorList.deleteNode(removeChoice);
+                resistorList.deleteNode(removeChoice-1);
                 break; 
 
             //Simplify the circuit 
