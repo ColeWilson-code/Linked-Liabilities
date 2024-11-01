@@ -141,7 +141,11 @@ class LinkedList
             return (head == NULL);
         }
 
-		ListNode<T>* getHead() const {
+		/*############################################
+			Function: getHead
+			Purpose: return head node 
+		############################################*/
+		ListNode<T>* getHead() const{
     		return head;
 		}
 
@@ -153,10 +157,7 @@ class LinkedList
 		int getLength() const{
             int counter = 0;
 			//pointer to traverse list 
-	        ListNode<T> *nodePtr;
-
-			//put traversal pointer at head
-	        nodePtr = getHead();
+	        ListNode<T> *nodePtr = this->getHead();
 	
 	        //list traversal
 			//loop while the traversal pointer is not at the tail
@@ -178,7 +179,7 @@ class LinkedList
 		############################################*/
 		void appendNode(T newData){
 	        ListNode<T> *newNode;  // To point to a new node by declaring a newNode pointer
-	        ListNode<T> *nodePtr;  // To move through the list //traversal popinter
+	        ListNode<T> *nodePtr = this->getHead();  // To move through the list //traversal popinter
 
 	        // Allocate a new node and store num there.
 	        newNode = new ListNode<T>;
@@ -213,7 +214,7 @@ class LinkedList
 		############################################*/
 		void prependNode(T newData){
 	        ListNode<T> *newNode;  // To point to a new node by declaring a newNode pointer
-	        ListNode<T> *nodePtr = getHead();  // To move through the list //traversal popinter
+	        ListNode<T> *nodePtr = this->getHead();;  // To move through the list //traversal popinter
 
 	        // Allocate a new node and store num there.
 	        newNode = new ListNode<T>;
@@ -249,7 +250,7 @@ class LinkedList
 		############################################*/
 		void insertNode(int position, T newData){
 	        //traversal pointer
-			ListNode<T> *nodePtr;
+			ListNode<T> *nodePtr = this->getHead();
 			//new node pointer
 	        ListNode<T> *newNode;
 	
@@ -268,7 +269,6 @@ class LinkedList
 	        }
 	        else
 	        {
-	        	nodePtr = getHead();
 	        	int nodeCount = 0;
 	        	if(position == 0)
 	        	{
@@ -310,7 +310,7 @@ class LinkedList
 			Purpose: delete the data a node 
 		############################################*/
 		 void deleteNode(int position){
-			ListNode<T> *nodePtr = getHead();       // To traverse the list
+			ListNode<T> *nodePtr = this->getHead();       // To traverse the list
 			ListNode<T> *previousNode;  // To point to the previous node
 
 			// If the list is empty, do nothing.
@@ -358,10 +358,7 @@ class LinkedList
 		#############################################*/
 		void displayList() const
 		{
-			ListNode<T> *nodePtr;  // To move through the list
-
-			// Position nodePtr at the head of the list.
-			nodePtr = getHead();
+			ListNode<T> *nodePtr = this->getHead();  // To move through the list
 
 			if(nodePtr == NULL){
 				cout << "The list does not contain any elements." << endl;
@@ -386,10 +383,7 @@ class LinkedList
 		T getFront()
 		{
 			
-			ListNode<T> *nodePtr;  // To move through the list
-
-			// Position nodePtr at the head of the list.
-			nodePtr = getHead();
+			ListNode<T> *nodePtr = this->getHead();  // To move through the list
 
 			//if there is nothing there
 			if(nodePtr == NULL)
@@ -409,7 +403,7 @@ class LinkedList
 		#############################################*/
 		void pop()
 		{
-			ListNode<T> *nodePtr = getHead();       // To traverse the list
+			ListNode<T> *nodePtr = this->getHead();       // To traverse the list
 			ListNode<T> *previousNode;  // To point to the previous node
 
 			// If the list is empty, do nothing.
@@ -448,7 +442,7 @@ class LinkedList
 
 			//make an array to hold resistor values
 			int* resistors = new int[listLength];
-			ListNode<T> *nodePtr = getHead();  // To move through the list
+			ListNode<T> *nodePtr = this->getHead();  // To move through the list
 
 			if(nodePtr == NULL){
 				cout << "The list does not contain any elements." << endl;
@@ -472,7 +466,7 @@ class LinkedList
 		}
 
 
-		void MergeSort(int arr[], int beg, int end) {
+		void MergeSort(int arr[], int beg, int end) const {
    			int mid = 0;
 
    			if (beg < end)  //recursive case (when beg == end then that is base case) 
@@ -487,7 +481,7 @@ class LinkedList
    			}
 		}
 
-		void Merge(int arr[], int beg, int mid, int end) {
+		void Merge(int arr[], int beg, int mid, int end) const {
    			int mergedSize = end - beg + 1;                // Size of merged partition
    			int mergePos = 0;                          // Position to insert merged number
    			int leftPos = 0;                           // Position of elements in left partition
@@ -542,11 +536,8 @@ class LinkedList
 		#############################################*/
         friend ostream& operator << (ostream& os, const LinkedList& L)
         {
-            ListNode<T> *nodePtr;  // To move through the list
+            ListNode<T> *nodePtr = L.getHead();  // To move through the list
 
-			// Position nodePtr at the head of the list.
-			nodePtr = getHead();
-			
 			while(nodePtr){
 				os << nodePtr->getData() << " ";
             	nodePtr = nodePtr->getNext();
