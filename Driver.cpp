@@ -8,7 +8,6 @@
 //library inclusions
 #include "LinkedList.h"
 #include "DataClass.h"
-#include "DataClass.cpp"
 
 int main ()
 {

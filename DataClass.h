@@ -36,7 +36,6 @@ class Data
         void setResistance(double newResistance){resistance = newResistance;}
         void setPowerRating(double newPowerRating){powerRating = newPowerRating;}
 
-
         //comparison and stream operator overloads
 
             // <<
@@ -72,5 +71,7 @@ class Data
             }
 
 }; 
+
+Data userInputInfo();
 
 #endif
